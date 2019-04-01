@@ -11,6 +11,7 @@
         <module name="device-facade" />
         <module name="device-repository" />
         <module name="device-service" />
+        <module name="sm-domain" />
       </profile>
     </annotationProcessing>
   </component>
