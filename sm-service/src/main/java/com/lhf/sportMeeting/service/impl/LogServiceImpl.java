@@ -1,6 +1,6 @@
 package com.lhf.sportMeeting.service.impl;
 
-import com.lhf.deviceMS.domain.entity.Log;
+import com.lhf.sportMeeting.domain.entity.Log;
 import com.lhf.sportMeeting.repository.dao.LogDao;
 import com.lhf.sportMeeting.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;

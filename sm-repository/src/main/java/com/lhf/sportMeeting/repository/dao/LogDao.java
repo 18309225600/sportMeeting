@@ -1,7 +1,7 @@
 package com.lhf.sportMeeting.repository.dao;
 
-import com.lhf.deviceMS.common.utils.TimeUtils;
-import com.lhf.deviceMS.domain.entity.Log;
+import com.lhf.sportMeeting.common.utils.TimeUtils;
+import com.lhf.sportMeeting.domain.entity.Log;
 import com.lhf.sportMeeting.repository.mapper.LogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
 package com.lhf.sportMeeting.repository.dao;
 
-import com.lhf.deviceMS.domain.entity.TestUser;
+import com.lhf.sportMeeting.domain.entity.TestUser;
 import com.lhf.sportMeeting.repository.mapper.TestUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

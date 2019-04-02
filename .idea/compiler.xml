@@ -6,12 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="device-common" />
-        <module name="device-domain" />
-        <module name="device-facade" />
-        <module name="device-repository" />
-        <module name="device-service" />
+        <module name="sm-common" />
         <module name="sm-domain" />
+        <module name="sm-facade" />
+        <module name="sm-repository" />
+        <module name="sm-service" />
       </profile>
     </annotationProcessing>
   </component>

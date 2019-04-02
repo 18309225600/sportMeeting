@@ -1,6 +1,6 @@
 package com.lhf.sportMeeting.service.impl;
 
-import com.lhf.deviceMS.domain.entity.TestUser;
+import com.lhf.sportMeeting.domain.entity.TestUser;
 import com.lhf.sportMeeting.repository.dao.TestDao;
 import com.lhf.sportMeeting.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;

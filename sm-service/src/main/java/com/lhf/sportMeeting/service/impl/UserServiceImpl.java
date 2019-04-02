@@ -1,8 +1,8 @@
 package com.lhf.sportMeeting.service.impl;
 
-import com.lhf.deviceMS.common.std.WebException;
-import com.lhf.deviceMS.common.std.enums.WebErrCode;
-import com.lhf.deviceMS.domain.entity.User;
+import com.lhf.sportMeeting.common.std.WebException;
+import com.lhf.sportMeeting.common.std.enums.WebErrCode;
+import com.lhf.sportMeeting.domain.entity.User;
 import com.lhf.sportMeeting.repository.dao.UserDao;
 import com.lhf.sportMeeting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

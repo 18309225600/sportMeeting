@@ -1,6 +1,6 @@
 server:
   port: 80
-  contextPath:  /device
+  contextPath:  /sportmeeting
   tomcat:
     basedir:  /home/
 
