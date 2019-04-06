@@ -13,8 +13,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         super.addInterceptors(registry);
         //登录拦截器
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/test/**")
-                .excludePathPatterns("/login/**")
-                .excludePathPatterns("/index/**");
+                .excludePathPatterns("/login/**");
     }
 }

@@ -22,7 +22,7 @@
         <div id="top_center"></div>
     </div>
 
-    <form action="#" id="loginForm" method="post">
+    <form action="/login/regist" id="loginForm" method="post">
         <div id="center">
             <div id="center_left"></div>
 

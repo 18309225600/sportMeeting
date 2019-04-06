@@ -20,7 +20,7 @@ public class SessionUtils {
         context.remove();
     }
 
-    public static Long getUserId() {
+    public static long getUserId() {
         return context.get().getUserId();
     }
 
@@ -29,12 +29,12 @@ public class SessionUtils {
     }
 
     public static class SessionHolder{
-        private Long userId;
+        private long userId;
         private String userName;
         private String gender;
-        private String phone;
+        private Long phone;
         private String email;
-        private Long role;
+        private String role;
 
         public SessionHolder() {
         }
@@ -48,11 +48,11 @@ public class SessionUtils {
             this.role = user.getRole();
         }
 
-        public Long getUserId() {
+        public long getUserId() {
             return userId;
         }
 
-        public void setUserId(Long userId) {
+        public void setUserId(long userId) {
             this.userId = userId;
         }
 
@@ -72,11 +72,11 @@ public class SessionUtils {
             this.gender = gender;
         }
 
-        public String getPhone() {
+        public long getPhone() {
             return phone;
         }
 
-        public void setPhone(String phone) {
+        public void setPhone(long phone) {
             this.phone = phone;
         }
 
@@ -88,11 +88,11 @@ public class SessionUtils {
             this.email = email;
         }
 
-        public Long getRole() {
+        public String getRole() {
             return role;
         }
 
-        public void setRole(Long role) {
+        public void setRole(String role) {
             this.role = role;
         }
     }

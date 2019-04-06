@@ -15,6 +15,6 @@ public class IndexController {
 
     @GetMapping("/home")
     public String home(){
-        return "login/login";
+        return "login/signin";
     }
 }

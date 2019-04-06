@@ -31,10 +31,12 @@
         </javaClientGenerator>
 
 
-        <table schema="public" tableName="device_log" domainObjectName="Log">
+<!--        <table schema="public" tableName="device_log" domainObjectName="Log">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <table schema="public" tableName="t_user" domainObjectName="User">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-
 
 
     </context>
