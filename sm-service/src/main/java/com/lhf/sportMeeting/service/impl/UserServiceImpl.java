@@ -22,13 +22,14 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void regist(User inputUser) throws WebException {
+    public String regist(User inputUser) throws WebException {
         //check email unique
         if (!singleEmail(inputUser.getEmail())){
-            throw new WebException(WebErrCode.SM_USER_EMAIL_REPEAT);
+            return WebErrCode.SM_USER_EMAIL_REPEAT.getMsg();
         }
-
+        inputUser.setPassword(EncryptionUtils.md5(inputUser.getPassword()));
         userDao.merge(inputUser);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
     }
 
     @Override
@@ -49,6 +50,18 @@ public class UserServiceImpl implements UserService {
             session.setAttribute("user",user);
         }
         return null;
+    }
+
+    @Override
+    public String updateUser(Long userId, User inputUser) {
+        User user = userDao.queryUserById(userId);
+        if (user==null){
+            return WebErrCode.SM_USER_INFO_ERR.getMsg();
+        }
+
+        inputUser.setId(userId);
+        userDao.merge(inputUser);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
     }
 
     private boolean singleEmail(String email) {

@@ -1,16 +1,40 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhf.sportMeeting.repository.mapper.SportMapper" >
-  <resultMap id="BaseResultMap" type="com.lhf.sportMeeting.domain.entity.Sport" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhf.sportMeeting.repository.mapper.SportMapper">
+  <resultMap id="BaseResultMap" type="com.lhf.sportMeeting.domain.entity.Sport">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="start_at" property="startAt" jdbcType="TIMESTAMP" />
-    <result column="end_at" property="endAt" jdbcType="TIMESTAMP" />
-    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
-    <result column="deleted_at" property="deletedAt" jdbcType="TIMESTAMP" />
-    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="start_at" jdbcType="TIMESTAMP" property="startAt" />
+    <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.lhf.sportMeeting.domain.entity.Sport">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="start_at" jdbcType="TIMESTAMP" property="startAt" />
+    <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.lhf.sportMeeting.domain.entity.Sport">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="start_at" jdbcType="TIMESTAMP" property="startAt" />
+    <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
   </resultMap>
 </mapper>

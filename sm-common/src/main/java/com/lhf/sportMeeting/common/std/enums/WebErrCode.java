@@ -6,6 +6,7 @@ package com.lhf.sportMeeting.common.std.enums;
  * @date 17/8/19
  */
 public enum WebErrCode {
+    SM_SYS_OP_SUCC("2000001","操作成功"),
     SM_SYS_ERROR("5000001","网络繁忙"),
     SM_SYS_OPTION_NOT_EXSIT("5000002","操作信息不存在"),
     SM_COMMON_OPERATION_FAIL("5000003","操作失败"),

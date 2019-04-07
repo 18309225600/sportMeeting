@@ -2,6 +2,7 @@ package com.lhf.sportMeeting.facade.web;
 
 
 import com.lhf.sportMeeting.common.std.WebException;
+import com.lhf.sportMeeting.common.std.enums.WebErrCode;
 import com.lhf.sportMeeting.domain.entity.User;
 import com.lhf.sportMeeting.facade.data.input.UserRegistInputDto;
 import com.lhf.sportMeeting.service.UserService;
@@ -58,9 +59,14 @@ public class LoginController {
     @PostMapping("/regist")
     public String regist(UserRegistInputDto input, Map model) throws WebException {
         User inputUser = input.verify().transform();
-        userService.regist(inputUser);
-        model.put("msg","regist succ");
-        return "login/signin";
+        String message = userService.regist(inputUser);
+
+        model.put("msg",message);
+        if (message.equalsIgnoreCase(WebErrCode.SM_SYS_OP_SUCC.getMsg())){
+            return "login/signin";
+        }else{
+            return "regist/signup";
+        }
     }
 
     /**

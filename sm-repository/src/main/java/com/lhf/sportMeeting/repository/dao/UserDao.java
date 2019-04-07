@@ -31,4 +31,10 @@ public class UserDao {
             userMapper.updateByPrimaryKeySelective(user);
         }
     }
+
+    public User queryUserById(Long userId) {
+        Weekend<User> weekend = new Weekend<>(User.class);
+        weekend.weekendCriteria().andIsNull(User::getDeletedAt).andEqualTo(User::getId,userId);
+        return userMapper.selectOneByExample(weekend);
+    }
 }

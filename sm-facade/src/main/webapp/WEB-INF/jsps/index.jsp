@@ -32,19 +32,62 @@
             <div class="inbox-mail">
                 <div class="col-md-9 compose w3layouts">
 
-                    <h2>${sessionScope.user.username}</h2>
-                    <div class="table-img">
-                        <img src="${ctx}${sessionScope.user.img}" alt="头像">
+                    <div class="table-img" style="text-align: center;">
+                        <img class="headImgSucc" src="${ctx}${sessionScope.user.img}" alt="头像" width="200px" height="200px">
                     </div>
-                    <nav class="nav-sidebar">
-                        <ul class="nav tabs">
-                            <li ><i class="fa fa-inbox"></i>性别 <span>${sessionScope.user.gender}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>手机号 <span>${sessionScope.user.phone}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>邮箱 <span>${sessionScope.user.email}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>角色 <span>${sessionScope.user.role}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>账号注册时间 <span>${sessionScope.user.createAt}</span><div class="clearfix"></div></li>
-                        </ul>
-                    </nav>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="horizontal-form">
+                            <form class="form-horizontal">
+                                <input type="hidden" class="userId" value="${sessionScope.user.id}">
+                                <div class="form-group headImg" hidden>
+                                    <div class="col-sm-8">
+                                        <input type="file" id="file" name="file" class="headImg">
+                                        <input type="hidden" name="img" class="img" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledinput1" class="col-sm-2 control-label">姓名</label>
+                                    <div class="col-sm-8">
+                                        <input disabled type="text" class="form-control1 username" id="disabledinput1" placeholder="${sessionScope.user.username}" value="${sessionScope.user.username}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledinput2" class="col-sm-2 control-label">性别</label>
+                                    <div class="col-sm-8">
+                                        <input disabled type="text" class="form-control1 gender" id="disabledinput2"  placeholder="${sessionScope.user.gender}" value="${sessionScope.user.gender}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledinput3" class="col-sm-2 control-label">手机号</label>
+                                    <div class="col-sm-8">
+                                        <input disabled type="text" class="form-control1 phone" id="disabledinput3" placeholder="${sessionScope.user.phone}" value="${sessionScope.user.phone}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledinput4" class="col-sm-2 control-label">邮箱</label>
+                                    <div class="col-sm-8">
+                                        <input disabled type="text" class="form-control1 email" id="disabledinput4" placeholder="${sessionScope.user.email}" value="${sessionScope.user.email}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledinput5" class="col-sm-2 control-label">角色</label>
+                                    <div class="col-sm-8">
+                                        <input disabled type="text" class="form-control1 role" id="disabledinput5" placeholder="${sessionScope.user.role eq 'user' ? '普通用户' : '管理员'}" value="${sessionScope.user.role eq 'user' ? '普通用户' : '管理员'}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledinput6" class="col-sm-2 control-label">注册时间</label>
+                                    <div class="col-sm-8">
+                                        <input disabled type="text" class="form-control1 createAt" id="disabledinput6" placeholder="<fmt:formatDate value="${sessionScope.user.createAt}" pattern="yyyy-MM-dd HH:mm:ss" />" value="<fmt:formatDate value="${sessionScope.user.createAt}" pattern="yyyy-MM-dd HH:mm:ss" />">
+                                    </div>
+                                </div>
+
+                                <a class="hvr-icon-rotate col-23 editPerson">编辑</a>
+                                <a class="hvr-icon-fade col-7 savePerson">保存</a>
+                            </form>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -54,6 +97,7 @@
     <!--/sidebar-menu-->
     <jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 </div>
+<script src="/static/assets/js/index/index.js"></script>
 <script>
     var toggle = true;
 
@@ -92,42 +136,6 @@
         function gd(year, day, month) {
             return new Date(year, month - 1, day).getTime();
         }
-
-        graphArea2 = Morris.Area({
-            element: 'hero-area',
-            padding: 10,
-            behaveLikeLine: true,
-            gridEnabled: false,
-            gridLineColor: '#dddddd',
-            axes: true,
-            resize: true,
-            smooth:true,
-            pointSize: 0,
-            lineWidth: 0,
-            fillOpacity:0.85,
-            data: [
-                {period: '2014 Q1', iphone: 2668, ipad: null, itouch: 2649},
-                {period: '2014 Q2', iphone: 15780, ipad: 13799, itouch: 12051},
-                {period: '2014 Q3', iphone: 12920, ipad: 10975, itouch: 9910},
-                {period: '2014 Q4', iphone: 8770, ipad: 6600, itouch: 6695},
-                {period: '2015 Q1', iphone: 10820, ipad: 10924, itouch: 12300},
-                {period: '2015 Q2', iphone: 9680, ipad: 9010, itouch: 7891},
-                {period: '2015 Q3', iphone: 4830, ipad: 3805, itouch: 1598},
-                {period: '2015 Q4', iphone: 15083, ipad: 8977, itouch: 5185},
-                {period: '2016 Q1', iphone: 10697, ipad: 4470, itouch: 2038},
-                {period: '2016 Q2', iphone: 8442, ipad: 5723, itouch: 1801}
-            ],
-            lineColors:['#ff4a43','#a2d200','#22beef'],
-            xkey: 'period',
-            redraw: true,
-            ykeys: ['iphone', 'ipad', 'itouch'],
-            labels: ['All Visitors', 'Returning Visitors', 'Unique Visitors'],
-            pointSize: 2,
-            hideHover: 'auto',
-            resize: true
-        });
-
-
     });
 </script>
 </body>

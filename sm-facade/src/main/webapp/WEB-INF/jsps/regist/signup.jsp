@@ -10,10 +10,13 @@
 	<div class="container">
 	<div class="sin-w3-agile">
 		<h2>欢迎注册运动会报名管理系统</h2>
+		<p style="color:red;">${msg}</p>
 		<form action="/login/regist" method="post">
+			<input type="hidden" name="img" class="img" value="">
+
 			<div class="username">
 				<span class="username">用户名:</span>
-				<input type="text" name="name" class="name" placeholder="" required="true">
+				<input type="text" name="username" class="name" placeholder="" required="true">
 				<div class="clearfix"></div>
 			</div>
 			<div class="gender">
@@ -40,6 +43,14 @@
 				<input type="text" name="phone" class="phone" placeholder="" required="">
 				<div class="clearfix"></div>
 			</div>
+			<div class="headImg">
+				<span class="headImg">头像:</span>
+				<input type="file" id="file" name="file" class="headImg">
+				<div class="table-img" style="text-align: center;">
+					<img hidden width="200px" height="200px" class="headImgSucc" src=""/>
+				</div>
+				<div class="clearfix"></div>
+			</div>
 
 			<div class="login-w3">
 					<input type="submit" class="login" value="注册">
@@ -56,4 +67,5 @@
 	</div>
 	</div>
 </body>
+<script src="/static/assets/js/regist/signup.js"></script>
 </html>

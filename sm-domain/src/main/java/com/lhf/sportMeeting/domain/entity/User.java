@@ -13,7 +13,7 @@ public class User {
 
     private String gender;
 
-    private Long phone;
+    private String phone;
 
     private String email;
 
@@ -77,15 +77,15 @@ public class User {
     /**
      * @return phone
      */
-    public Long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
     /**
      * @param phone
      */
-    public void setPhone(Long phone) {
-        this.phone = phone;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     /**

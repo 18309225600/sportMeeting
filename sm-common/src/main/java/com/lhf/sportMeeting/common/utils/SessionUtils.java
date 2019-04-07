@@ -32,7 +32,7 @@ public class SessionUtils {
         private long userId;
         private String userName;
         private String gender;
-        private Long phone;
+        private String phone;
         private String email;
         private String role;
 
@@ -72,11 +72,11 @@ public class SessionUtils {
             this.gender = gender;
         }
 
-        public long getPhone() {
+        public String getPhone() {
             return phone;
         }
 
-        public void setPhone(long phone) {
+        public void setPhone(String phone) {
             this.phone = phone;
         }
 

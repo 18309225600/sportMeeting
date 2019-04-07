@@ -7,19 +7,20 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 
 public class UserRegistInputDto {
-    private String name;
+    private String username;
     private String gender;
     private String phone;
     private String email;
     private String password;
+    private String img;
 
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getGender() {
@@ -54,9 +55,16 @@ public class UserRegistInputDto {
         this.password = password;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public UserRegistInputDto verify() throws WebException {
-        if (StringUtils.isBlank(name)||
+        if (StringUtils.isBlank(username)||
             StringUtils.isBlank(gender)||
             StringUtils.isBlank(phone)||
             StringUtils.isBlank(email)||

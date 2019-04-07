@@ -50,6 +50,10 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
+        <table schema="public" tableName="t_log" domainObjectName="Log">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
 
     </context>
 </generatorConfiguration>

@@ -3,7 +3,7 @@ package com.lhf.sportMeeting.domain.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-@Table(name = "device_log")
+@Table(name = "t_log")
 public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
