@@ -74,7 +74,7 @@ public class LoginController {
      * @param request
      * @return
      */
-    @GetMapping("exit")
+    @GetMapping("/exit")
     public String exit(HttpServletRequest request){
         HttpSession session=request.getSession();
         if(session!=null){

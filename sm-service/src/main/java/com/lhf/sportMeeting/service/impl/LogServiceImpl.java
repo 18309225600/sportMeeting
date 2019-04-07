@@ -1,5 +1,6 @@
 package com.lhf.sportMeeting.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.lhf.sportMeeting.domain.entity.Log;
 import com.lhf.sportMeeting.repository.dao.LogDao;
 import com.lhf.sportMeeting.service.LogService;
@@ -15,5 +16,10 @@ public class LogServiceImpl implements LogService {
     @Override
     public void save(Log log) {
         logDao.merge(log);
+    }
+
+    @Override
+    public PageInfo<Log> list(Integer pageNo, Integer pageSize) {
+        return logDao.list(pageNo,pageSize);
     }
 }

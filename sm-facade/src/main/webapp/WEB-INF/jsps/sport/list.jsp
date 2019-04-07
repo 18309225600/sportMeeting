@@ -12,7 +12,7 @@
     <link href="/static/assets/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
     <link href="/static/assets/css/style.css" rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="css/morris.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/assets/css/morris.css" type="text/css"/>
     <!-- Graph CSS -->
     <link href="/static/assets/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
@@ -23,37 +23,54 @@
     <!-- lined-icons -->
     <link rel="stylesheet" href="/static/assets/css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/basictable.css" />
+    <script type="text/javascript" src="/static/assets/js/jquery.basictable.min.js"></script>
 </head>
 <body>
 <div class="page-container">
     <!--/content-inner-->
     <div class="left-content">
-        <div class="mother-grid-inner">
-            <div class="inbox-mail">
-                <div class="col-md-9 compose w3layouts">
+        <div class="w3l-table-info">
+            <h2>运动会活动管理</h2>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>活动名称</th>
+                        <th>活动开始时间</th>
+                        <th>活动结束时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${list.list}" var="detail">
+                        <tr>
+                            <td data-th="Name"><span class="bt-content">${detail.name}</span></td>
+                            <td data-th="Age"><span class="bt-content"><fmt:formatDate value="${detail.startAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
+                            <td data-th="Gender"><span class="bt-content"><fmt:formatDate value="${detail.endAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
 
-                    <h2>${sessionScope.user.username}</h2>
-                    <div class="table-img">
-                        <img src="${ctx}${sessionScope.user.img}" alt="头像">
+                <%--pageInfo--%>
+                <div style="text-align: center;">
+                    <input type="hidden" id="pageNo" value="${pageNo}"/>
+                    <input type="hidden" id="totalPage" value="${list.pages}"/>
+                    <div>
+                        <strong style="float: left;">当前第${list.pageNum}/${list.pages}页，共记${list.total}条数据</strong>
+                        <button type="buttom" id="firstPage" class="btn btn-secondary">首页</button>
+                        <button type="buttom" id="proidPage" class="btn btn-success">上一页</button>
+                        <button type="buttom" id="nextPage" class="btn btn-success">下一页</button>
+                        <button type="buttom" id="endPage" class="btn btn-secondary">尾页</button>
                     </div>
-                    <nav class="nav-sidebar">
-                        <ul class="nav tabs">
-                            <li ><i class="fa fa-inbox"></i>性别 <span>${sessionScope.user.gender}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>手机号 <span>${sessionScope.user.phone}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>邮箱 <span>${sessionScope.user.email}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>角色 <span>${sessionScope.user.role}</span><div class="clearfix"></div></li>
-                            <li ><i class="fa fa-inbox"></i>账号注册时间 <span>${sessionScope.user.createAt}</span><div class="clearfix"></div></li>
-                        </ul>
-                    </nav>
-
                 </div>
-            </div>
+            </table>
         </div>
     </div>
     <!--//content-inner-->
     <!--/sidebar-menu-->
     <jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 </div>
+<script src="/static/assets/js/sport/list.js"></script>
 <script>
     var toggle = true;
 

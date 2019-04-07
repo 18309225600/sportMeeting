@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -23,10 +25,11 @@ public class UserController {
     @ResponseBody
     @OpLog("编辑个人信息")
     @PostMapping("/edit/{userId}")
-    public String edit(@PathVariable("userId")Long userId, @RequestBody UserRegistInputDto input){
+    public String edit(HttpServletRequest request, @PathVariable("userId")Long userId, @RequestBody UserRegistInputDto input){
         logger.info("编辑个人信息参数={}", JSONObject.toJSONString(input));
         User inputUser = input.transform();
         String msg = userService.updateUser(userId,inputUser);
+        request.getSession().invalidate();
         return msg;
     }
 }

@@ -43,7 +43,7 @@
                                 <div class="form-group headImg" hidden>
                                     <div class="col-sm-8">
                                         <input type="file" id="file" name="file" class="headImg">
-                                        <input type="hidden" name="img" class="img" value="">
+                                        <input type="hidden" name="img" class="img" value="${sessionScope.user.img}">
                                     </div>
                                 </div>
                                 <div class="form-group">
