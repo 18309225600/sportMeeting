@@ -9,19 +9,19 @@
     <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Bootstrap Core CSS -->
-    <link href="/static/assets/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
-    <link href="/static/assets/css/style.css" rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="/static/assets/css/morris.css" type="text/css"/>
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="css/morris.css" type="text/css"/>
     <!-- Graph CSS -->
-    <link href="/static/assets/css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
-    <script src="/static/assets/js/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
     <!-- //jQuery -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <!-- lined-icons -->
-    <link rel="stylesheet" href="/static/assets/css/icon-font.min.css" type='text/css' />
+    <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
 </head>
 <body>

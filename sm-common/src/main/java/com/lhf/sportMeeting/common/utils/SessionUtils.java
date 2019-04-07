@@ -41,7 +41,7 @@ public class SessionUtils {
 
         public SessionHolder(User user) {
             this.userId = user.getId();
-            this.userName = user.getName();
+            this.userName = user.getUsername();
             this.gender = user.getGender();
             this.phone = user.getPhone();
             this.email = user.getEmail();

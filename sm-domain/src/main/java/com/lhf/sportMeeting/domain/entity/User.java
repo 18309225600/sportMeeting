@@ -9,7 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String username;
 
     private String gender;
 
@@ -20,6 +20,11 @@ public class User {
     private String password;
 
     private String role;
+
+    /**
+     * 大头贴位置
+     */
+    private String img;
 
     @Column(name = "create_at")
     private Date createAt;
@@ -42,17 +47,17 @@ public class User {
     }
 
     /**
-     * @return name
+     * @return username
      */
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param name
+     * @param username
      */
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     /**
@@ -123,6 +128,24 @@ public class User {
      */
     public void setRole(String role) {
         this.role = role == null ? null : role.trim();
+    }
+
+    /**
+     * 获取大头贴位置
+     *
+     * @return img - 大头贴位置
+     */
+    public String getImg() {
+        return img;
+    }
+
+    /**
+     * 设置大头贴位置
+     *
+     * @param img 大头贴位置
+     */
+    public void setImg(String img) {
+        this.img = img == null ? null : img.trim();
     }
 
     /**

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
-@RequestMapping("login")
+@RequestMapping("/login")
 public class LoginController {
 
     @Autowired
@@ -29,12 +29,22 @@ public class LoginController {
         return  "login/signin";
     }
 
-    @PostMapping("login")
+    /**
+     * 登录
+     * @param model
+     * @param request
+     * @param email
+     * @param password
+     * @return
+     * @throws WebException
+     */
+    @PostMapping("/login")
     public String login(Map model,HttpServletRequest request,String email,String password)throws WebException{
         String message=userService.login(request,email,password);
         if(StringUtils.isBlank(message)){
             return "index";
         }else{
+            model.put("msg",message);
             return  "login/signin";
         }
     }
@@ -53,6 +63,11 @@ public class LoginController {
         return "login/signin";
     }
 
+    /**
+     * 用户退出
+     * @param request
+     * @return
+     */
     @GetMapping("exit")
     public String exit(HttpServletRequest request){
         HttpSession session=request.getSession();

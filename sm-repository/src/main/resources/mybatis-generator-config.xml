@@ -12,7 +12,7 @@
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/sportmeeting"
-                        userId="root" password="root">
+                        userId="root" password="123456">
         </jdbcConnection>
 
         <!-- POJO -->
@@ -35,6 +35,18 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <table schema="public" tableName="t_user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table schema="public" tableName="t_sport" domainObjectName="Sport">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table schema="public" tableName="t_sport_item" domainObjectName="SportItem">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table schema="public" tableName="t_sport_item_join" domainObjectName="SportItemJoin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 

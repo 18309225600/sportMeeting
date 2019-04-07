@@ -273,7 +273,7 @@ public class DataSourceConfig {
         transactionAttributes.setProperty("insert*","PROPAGATION_REQUIRED");
         transactionAttributes.setProperty("update*","PROPAGATION_REQUIRED");
         transactionAttributes.setProperty("delete*","PROPAGATION_REQUIRED");
-        transactionAttributes.setProperty("*","readOnly");
+        transactionAttributes.setProperty("*","PROPAGATION_REQUIRED");
         interceptor.setTransactionAttributes(transactionAttributes);
         return interceptor;
     }

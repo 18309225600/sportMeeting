@@ -2,6 +2,7 @@ package com.lhf.sportMeeting.service.impl;
 
 import com.lhf.sportMeeting.common.std.WebException;
 import com.lhf.sportMeeting.common.std.enums.WebErrCode;
+import com.lhf.sportMeeting.common.utils.EncryptionUtils;
 import com.lhf.sportMeeting.domain.entity.User;
 import com.lhf.sportMeeting.repository.dao.UserDao;
 import com.lhf.sportMeeting.service.UserService;
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
             return WebErrCode.SM_USER_INFO_ERR.getMsg();
         }
         User user=users.get(0);
-        if(!password.equalsIgnoreCase(user.getPassword())){
+        if(!EncryptionUtils.md5(password).equalsIgnoreCase(user.getPassword())){
             return WebErrCode.SM_USER_NAMMERR_OR_ACCOUNT_ERR.getMsg();
         }
         if(user!=null){

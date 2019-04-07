@@ -32,7 +32,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        logger.info("current login username is : {}",user.getName());
+        logger.info("current login username is : {}",user.getUsername());
         SessionUtils.set(user);
         return true;
     }
