@@ -13,5 +13,13 @@
         <module name="sm-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sm-common" target="1.8" />
+      <module name="sm-domain" target="1.8" />
+      <module name="sm-facade" target="1.8" />
+      <module name="sm-repository" target="1.8" />
+      <module name="sm-service" target="1.8" />
+      <module name="sportMeeting" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
