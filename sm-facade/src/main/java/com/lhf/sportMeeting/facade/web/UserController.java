@@ -1,6 +1,8 @@
 package com.lhf.sportMeeting.facade.web;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
+import com.lhf.sportMeeting.common.std.PageIn;
 import com.lhf.sportMeeting.domain.entity.User;
 import com.lhf.sportMeeting.facade.config.oplog.annotations.OpLog;
 import com.lhf.sportMeeting.facade.data.input.UserRegistInputDto;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -31,5 +34,19 @@ public class UserController {
         String msg = userService.updateUser(userId,inputUser);
         request.getSession().invalidate();
         return msg;
+    }
+
+    /**
+     * 用户列表
+     * @param model
+     * @param page
+     * @return
+     */
+    @GetMapping("/list")
+    public String list(Map model, PageIn page){
+        PageInfo<User> pageInfo = userService.list(page.getPageNo(),page.getPageSize());
+        model.put("pageNo",page.getPageNo());
+        model.put("list",pageInfo);
+        return "user/list";
     }
 }

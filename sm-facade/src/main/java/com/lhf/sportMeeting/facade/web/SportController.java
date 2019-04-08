@@ -33,4 +33,16 @@ public class SportController {
         model.put("list",pageInfo);
         return "sport/list";
     }
+
+    /**
+     * 比赛项目列表
+     * @param model
+     * @param sport
+     * @param page
+     * @return
+     */
+    @GetMapping("/items")
+    public String itemList(Map model,Long sport,PageIn page){
+        return "";
+    }
 }
