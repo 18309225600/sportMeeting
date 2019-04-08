@@ -33,23 +33,21 @@
     <!--/content-inner-->
     <div class="left-content">
         <div class="w3l-table-info">
-            <h2>操作日志管理</h2>
+            <h2>运动会活动管理</h2>
             <table id="table">
                 <thead>
                 <tr>
-                    <th>操作人</th>
-                    <th>操作时间</th>
-                    <th>操作事件</th>
-                    <th>远端IP</th>
+                    <th>活动名称</th>
+                    <th>活动开始时间</th>
+                    <th>活动结束时间</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${list.list}" var="detail">
                     <tr>
-                        <td><span class="bt-content">${detail.username}</span></td>
-                        <td><span class="bt-content"><fmt:formatDate value="${detail.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></td>
-                        <td><span class="bt-content">${detail.operation}</span></td>
-                        <td><span class="bt-content">${detail.remoteIp}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.name}</span></td>
+                        <td data-th="Age"><span class="bt-content"><fmt:formatDate value="${detail.startAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
+                        <td data-th="Gender"><span class="bt-content"><fmt:formatDate value="${detail.endAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -71,7 +69,7 @@
         </div>
     </div>
 </div>
-<script src="/static/assets/js/oplog/list.js"></script>
+<script src="/static/assets/js/sport/itemList.js"></script>
 <script>
     var toggle = true;
 

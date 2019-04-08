@@ -3,6 +3,8 @@ package com.lhf.sportMeeting.facade.web;
 import com.github.pagehelper.PageInfo;
 import com.lhf.sportMeeting.common.std.PageIn;
 import com.lhf.sportMeeting.domain.entity.Sport;
+import com.lhf.sportMeeting.domain.entity.SportItem;
+import com.lhf.sportMeeting.domain.entity.SportItemJoin;
 import com.lhf.sportMeeting.service.SportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,12 +39,34 @@ public class SportController {
     /**
      * 比赛项目列表
      * @param model
-     * @param sport
+     * @param sportId
      * @param page
      * @return
      */
     @GetMapping("/items")
-    public String itemList(Map model,Long sport,PageIn page){
-        return "";
+    public String itemList(Map model,Long sportId,PageIn page){
+        PageInfo<SportItem> pageInfo = sportService.itemList(sportId,page.getPageNo(),page.getPageSize());
+        model.put("pageNo",page.getPageNo());
+        model.put("list",pageInfo);
+        return "sport/itemList";
     }
+
+
+    /**
+     * 报名列表
+     * @param model
+     * @param sportId
+     * @param itemId
+     * @param page
+     * @return
+     */
+    @GetMapping("/joinList")
+    public String joinList(Map model,Long sportId,Long itemId,PageIn page){
+        PageInfo<SportItemJoin> pageInfo = sportService.joinList(sportId,itemId,page.getPageNo(),page.getPageSize());
+        model.put("pageNo",page.getPageNo());
+        model.put("list",pageInfo);
+        return "sport/joinList";
+    }
+
+
 }

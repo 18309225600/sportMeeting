@@ -20,6 +20,9 @@ public class Sport {
     @Column(name = "end_at")
     private Date endAt;
 
+    @Column(name = "sport_items")
+    private String sportItems;
+
     @Column(name = "created_at")
     private Date createdAt;
 
@@ -86,6 +89,20 @@ public class Sport {
      */
     public void setEndAt(Date endAt) {
         this.endAt = endAt;
+    }
+
+    /**
+     * @return sport_items
+     */
+    public String getSportItems() {
+        return sportItems;
+    }
+
+    /**
+     * @param sportItems
+     */
+    public void setSportItems(String sportItems) {
+        this.sportItems = sportItems == null ? null : sportItems.trim();
     }
 
     /**
