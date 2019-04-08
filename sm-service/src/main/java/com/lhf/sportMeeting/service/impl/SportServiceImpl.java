@@ -9,6 +9,8 @@ import com.lhf.sportMeeting.service.SportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SportServiceImpl implements SportService {
 
@@ -28,5 +30,15 @@ public class SportServiceImpl implements SportService {
     @Override
     public PageInfo<SportItemJoin> joinList(Long sportId,Long itemId, Integer pageNo, Integer pageSize) {
         return sportDao.joinList(sportId,itemId,pageNo,pageSize);
+    }
+
+    @Override
+    public Sport querySportById(Long sportId) {
+        return sportDao.querySportById(sportId);
+    }
+
+    @Override
+    public List<SportItem> querySportItems(Long sportId) {
+        return sportDao.querySportItemBySportId(sportId);
     }
 }

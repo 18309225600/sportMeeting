@@ -60,7 +60,7 @@ public class SportDao {
         return new PageInfo<>(sportItemMapper.selectByExample(weekend));
     }
 
-    private Sport querySportById(Long sportId) {
+    public Sport querySportById(Long sportId) {
         return sportMapper.selectByPrimaryKey(sportId);
     }
 
@@ -74,5 +74,28 @@ public class SportDao {
         Weekend<SportItemJoin> weekend = new Weekend<>(SportItemJoin.class);
         weekend.weekendCriteria().andIsNull(SportItemJoin::getDeletedAt).andEqualTo(SportItemJoin::getSportId,sportId).andEqualTo(SportItemJoin::getItemId,itemId);
         return new PageInfo<>(sportItemJoinMapper.selectByExample(weekend));
+    }
+
+    public List<SportItem> querySportItemBySportId(Long sportId) {
+        Weekend<SportItem> weekend = new Weekend<>(SportItem.class);
+        WeekendCriteria<SportItem, Object> criteria = weekend.weekendCriteria();
+
+        if (sportId!=null){
+            Sport sport = querySportById(sportId);
+            String sportItems = sport.getSportItems();
+            if (StringUtils.isNotBlank(sportItems)){
+                String[] itemIdArr = sportItems.split(",");
+                List<Long> itemIds = new ArrayList<>();
+
+                for (String itemId:itemIdArr){
+                    itemIds.add(Long.valueOf(itemId));
+                }
+
+                if (CollectionUtils.isNotEmpty(itemIds)){
+                    criteria.andIn(SportItem::getId,itemIds);
+                }
+            }
+        }
+        return sportItemMapper.selectByExample(weekend);
     }
 }

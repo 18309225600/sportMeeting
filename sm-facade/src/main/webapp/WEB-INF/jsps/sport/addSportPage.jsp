@@ -12,7 +12,7 @@
     <link href="/static/assets/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
     <link href="/static/assets/css/style.css" rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="/static/assets/css/morris.css" type="text/css"/>
+    <link rel="stylesheet" href="css/morris.css" type="text/css"/>
     <!-- Graph CSS -->
     <link href="/static/assets/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
@@ -23,64 +23,62 @@
     <!-- lined-icons -->
     <link rel="stylesheet" href="/static/assets/css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/table-style.css" />
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/basictable.css" />
-    <script type="text/javascript" src="/static/assets/js/jquery.basictable.min.js"></script>
 </head>
 <body>
+
 <jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 <div class="page-container">
     <!--/content-inner-->
     <div class="left-content">
-        <div class="w3l-table-info">
-            <h2>运动会活动管理</h2>
-            <table id="table">
-                <thead>
-                    <tr>
-                        <th>活动名称</th>
-                        <th>活动开始时间</th>
-                        <th>活动结束时间</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${list.list}" var="detail">
-                        <tr>
-                            <td data-th="Name"><span class="bt-content">${detail.name}</span></td>
-                            <td data-th="Age"><span class="bt-content"><fmt:formatDate value="${detail.startAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
-                            <td data-th="Gender"><span class="bt-content"><fmt:formatDate value="${detail.endAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
-                            <td>
-                                <a href="#" class="hvr-icon-float col-12">详情</a>
-                                <a href="#" class="hvr-icon-rotate col-12">编辑</a>
-                                <a href="#" class="hvr-icon-sink-away col-12">删除</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
+        <div class="mother-grid-inner">
+            <div class="validation-system">
+                <div class="validation-form">
+                    <form>
+                        <div class="vali-form">
+                            <div class="col-md-6 form-group1">
+                                <label class="control-label">运动会名称</label>
+                                <input type="text" name="name" placeholder="运动会名称" required="">
+                            </div>
+                        </div>
 
-                <div class="col-md-2 agileits-w3layouts-bnt" style="float:right;">
-                    <div class="bg-danger dark pv10 text-white fw100 text-center"><a href="">添加活动</a></div>
+                        <div class="col-md-12 form-group1 group-mail">
+                            <label class="control-label ">开始时间</label>
+                            <input type="date" name="startAt" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="">
+                        </div>
+                        <div class="col-md-12 form-group1 group-mail">
+                            <label class="control-label ">结束时间</label>
+                            <input type="date" name="endAt" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="">
+                        </div>
+
+                        <div class="col-md-12 form-group1 ">
+                            <label class="control-label">备注及规则说明</label>
+                            <textarea name="remark" placeholder="Your Comment..." required="">规则及说明</textarea>
+                        </div>
+
+                        <div class="form-group1">
+                            <label class="col-sm-2 control-label">Checkbox</label>
+                            <div class="col-sm-8">
+                                <div class="checkbox-inline1"><label><input type="checkbox"> Unchecked</label></div>
+                                <div class="checkbox-inline1"><label><input type="checkbox" checked=""> Checked</label></div>
+                                <div class="checkbox-inline1"><label><input type="checkbox" disabled=""> Disabled Unchecked</label></div>
+                                <div class="checkbox-inline1"><label><input type="checkbox" disabled="" checked=""> Disabled Checked</label></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </form>
+
+                    <!---->
                 </div>
 
-            </table>
-
-            <%--pageInfo--%>
-            <br>
-            <div style="text-align: center;">
-                <input type="hidden" id="pageNo" value="${pageNo}"/>
-                <input type="hidden" id="totalPage" value="${list.pages}"/>
-                <div>
-                    <strong style="float: left;">当前第${list.pageNum}/${list.pages}页，共记${list.total}条数据</strong>
-                    <button type="buttom" id="firstPage" class="btn btn-secondary">首页</button>
-                    <button type="buttom" id="proidPage" class="btn btn-success">上一页</button>
-                    <button type="buttom" id="nextPage" class="btn btn-success">下一页</button>
-                    <button type="buttom" id="endPage" class="btn btn-secondary">尾页</button>
-                </div>
             </div>
         </div>
     </div>
 </div>
-<script src="/static/assets/js/sport/list.js"></script>
 <script>
     var toggle = true;
 

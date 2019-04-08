@@ -7,7 +7,7 @@ $(document).ready(function(){
 });
 
 var bind = function () {
-
+    //
 }
 
 

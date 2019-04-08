@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -34,6 +35,24 @@ public class SportController {
         model.put("pageNo",page.getPageNo());
         model.put("list",pageInfo);
         return "sport/list";
+    }
+
+    /**
+     * 添加或编辑活动页面
+     * @return
+     */
+    @GetMapping("/addSport")
+    public String sportAddPage(Map model,Long sportId){
+        Sport sport = null;
+        if (sportId!=null){
+            sport = sportService.querySportById(sportId);
+        }
+        //检索出所有的item
+        List<SportItem> sportItems = sportService.querySportItems(null);
+
+        model.put("sport",sport);
+        model.put("sportItems",sportItems);
+        return "sport/addSportPage";
     }
 
     /**
