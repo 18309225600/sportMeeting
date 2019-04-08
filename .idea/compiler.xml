@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sm-common" />
         <module name="sm-domain" />
         <module name="sm-facade" />
-        <module name="sm-repository" />
         <module name="sm-service" />
+        <module name="sm-repository" />
+        <module name="sm-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
