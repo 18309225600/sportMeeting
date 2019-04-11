@@ -2,6 +2,7 @@ package com.lhf.sportMeeting.repository.dao;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lhf.sportMeeting.common.utils.TimeUtils;
 import com.lhf.sportMeeting.domain.entity.Sport;
 import com.lhf.sportMeeting.domain.entity.SportItem;
 import com.lhf.sportMeeting.domain.entity.SportItemJoin;
@@ -32,6 +33,7 @@ public class SportDao {
     public PageInfo<Sport> pages(Integer pageNo, Integer pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         Weekend<Sport> weekend = new Weekend<>(Sport.class);
+        weekend.setOrderByClause("created_at desc");
         weekend.weekendCriteria().andIsNull(Sport::getDeletedAt);
         return new PageInfo<>(sportMapper.selectByExample(weekend));
     }
@@ -97,5 +99,20 @@ public class SportDao {
             }
         }
         return sportItemMapper.selectByExample(weekend);
+    }
+
+    public List<SportItem> allSportItems() {
+        Weekend<SportItem> weekend = new Weekend<>(SportItem.class);
+        weekend.weekendCriteria().andIsNull(SportItem::getDeletedAt);
+        return sportItemMapper.selectByExample(weekend);
+    }
+
+    public void merge(Sport sport) {
+        if (sport.getId()==null){
+            sport.setCreatedAt(TimeUtils.currentTime());
+            sportMapper.insertSelective(sport);
+        }else{
+            sportMapper.updateByPrimaryKeySelective(sport);
+        }
     }
 }

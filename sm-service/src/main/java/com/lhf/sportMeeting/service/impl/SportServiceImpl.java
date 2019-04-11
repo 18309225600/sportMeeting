@@ -1,6 +1,8 @@
 package com.lhf.sportMeeting.service.impl;
 
 import com.github.pagehelper.PageInfo;
+import com.lhf.sportMeeting.common.std.enums.WebErrCode;
+import com.lhf.sportMeeting.common.utils.TimeUtils;
 import com.lhf.sportMeeting.domain.entity.Sport;
 import com.lhf.sportMeeting.domain.entity.SportItem;
 import com.lhf.sportMeeting.domain.entity.SportItemJoin;
@@ -40,5 +42,29 @@ public class SportServiceImpl implements SportService {
     @Override
     public List<SportItem> querySportItems(Long sportId) {
         return sportDao.querySportItemBySportId(sportId);
+    }
+
+    @Override
+    public List<SportItem> allSportItems() {
+        return sportDao.allSportItems();
+    }
+
+    @Override
+    public void saveSport(Sport sport) {
+        sportDao.merge(sport);
+    }
+
+    @Override
+    public String delSport(Long sportId) {
+        Sport sport = sportDao.querySportById(sportId);
+        if (sport==null){
+            return WebErrCode.SM_SYS_OPTION_NOT_EXSIT.getMsg();
+        }
+
+        Sport del = new Sport();
+        del.setId(sportId);
+        del.setDeletedAt(TimeUtils.currentTime());
+        sportDao.merge(del);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
     }
 }

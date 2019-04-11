@@ -12,7 +12,7 @@
     <link href="/static/assets/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
     <link href="/static/assets/css/style.css" rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="css/morris.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/assets/css/morris.css" type="text/css"/>
     <!-- Graph CSS -->
     <link href="/static/assets/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
@@ -34,39 +34,39 @@
             <div class="validation-system">
                 <div class="validation-form">
                     <form>
+                        <input type="hidden" name="id" class="id" value="${sport.id}">
                         <div class="vali-form">
                             <div class="col-md-6 form-group1">
                                 <label class="control-label">运动会名称</label>
-                                <input type="text" name="name" placeholder="运动会名称" required="">
+                                <input type="text" name="name" placeholder="运动会名称" class="name" required="" value="${sport.name}">
                             </div>
                         </div>
 
                         <div class="col-md-12 form-group1 group-mail">
                             <label class="control-label ">开始时间</label>
-                            <input type="date" name="startAt" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="">
+                            <input type="date" name="startAt" class="form-control1 ng-invalid ng-invalid-required startAt" ng-model="model.date" required="" value="${sport.startAt}">
                         </div>
                         <div class="col-md-12 form-group1 group-mail">
                             <label class="control-label ">结束时间</label>
-                            <input type="date" name="endAt" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="">
+                            <input type="date" name="endAt" class="form-control1 ng-invalid ng-invalid-required endAt" ng-model="model.date" required="" value="${sport.endAt}">
                         </div>
 
                         <div class="col-md-12 form-group1 ">
                             <label class="control-label">备注及规则说明</label>
-                            <textarea name="remark" placeholder="Your Comment..." required="">规则及说明</textarea>
+                            <textarea name="remark" class="remark" placeholder="请输入备注信息" required="">${sport.remark}</textarea>
                         </div>
 
                         <div class="form-group1">
-                            <label class="col-sm-2 control-label">Checkbox</label>
+                            <label class="col-sm-2 control-label">运动项</label>
                             <div class="col-sm-8">
-                                <div class="checkbox-inline1"><label><input type="checkbox"> Unchecked</label></div>
-                                <div class="checkbox-inline1"><label><input type="checkbox" checked=""> Checked</label></div>
-                                <div class="checkbox-inline1"><label><input type="checkbox" disabled=""> Disabled Unchecked</label></div>
-                                <div class="checkbox-inline1"><label><input type="checkbox" disabled="" checked=""> Disabled Checked</label></div>
+                                <c:forEach items="${sportItems}" var="sportItem">
+                                    <div class="checkbox-inline1"><label><input type="checkbox" value="${sportItem.id}" <c:if test="${fn:contains(sport.sportItems,sportItem.id)}">checked</c:if>> ${sportItem.itemName}</label></div>
+                                </c:forEach>
                             </div>
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-primary addBtn">Submit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         </div>
                         <div class="clearfix"> </div>
@@ -79,6 +79,7 @@
         </div>
     </div>
 </div>
+<script src="/static/assets/js/sport/addSportPage.js"></script>
 <script>
     var toggle = true;
 

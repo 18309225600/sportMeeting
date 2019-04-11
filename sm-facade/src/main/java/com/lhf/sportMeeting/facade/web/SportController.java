@@ -1,15 +1,19 @@
 package com.lhf.sportMeeting.facade.web;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.lhf.sportMeeting.common.std.PageIn;
+import com.lhf.sportMeeting.common.std.enums.WebErrCode;
 import com.lhf.sportMeeting.domain.entity.Sport;
 import com.lhf.sportMeeting.domain.entity.SportItem;
 import com.lhf.sportMeeting.domain.entity.SportItemJoin;
+import com.lhf.sportMeeting.facade.data.input.SportInputDto;
 import com.lhf.sportMeeting.service.SportService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +24,8 @@ public class SportController {
 
     @Autowired
     private SportService sportService;
+
+    private Logger logger = LoggerFactory.getLogger(SportController.class);
 
 
     /**
@@ -53,6 +59,27 @@ public class SportController {
         model.put("sport",sport);
         model.put("sportItems",sportItems);
         return "sport/addSportPage";
+    }
+
+    /**
+     * 保存活动
+     * @param input
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/saveSport")
+    public String saveSport(@RequestBody SportInputDto input){
+        logger.info("save param ={}", JSONObject.toJSONString(input));
+        Sport sport = input.transform();
+        sportService.saveSport(sport);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
+    }
+
+    @GetMapping("/{sportId}/delSport")
+    @ResponseBody
+    public String delSport(@PathVariable("sportId")Long sportId){
+        String msg = sportService.delSport(sportId);
+        return msg;
     }
 
     /**

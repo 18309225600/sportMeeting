@@ -17,4 +17,10 @@ public interface SportService {
     Sport querySportById(Long sportId);
 
     List<SportItem> querySportItems(Long sportId);
+
+    List<SportItem> allSportItems();
+
+    void saveSport(Sport sport);
+
+    String delSport(Long sportId);
 }

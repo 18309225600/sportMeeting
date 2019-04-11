@@ -46,20 +46,20 @@
                 <tbody>
                     <c:forEach items="${list.list}" var="detail">
                         <tr>
+                            <input type="hidden" class="id" value="${detail.id}">
                             <td data-th="Name"><span class="bt-content">${detail.name}</span></td>
                             <td data-th="Age"><span class="bt-content"><fmt:formatDate value="${detail.startAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
                             <td data-th="Gender"><span class="bt-content"><fmt:formatDate value="${detail.endAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
                             <td>
-                                <a href="#" class="hvr-icon-float col-12">详情</a>
-                                <a href="#" class="hvr-icon-rotate col-12">编辑</a>
-                                <a href="#" class="hvr-icon-sink-away col-12">删除</a>
+                                <a href="/sport/addSport?sportId=${detail.id}" class="hvr-icon-rotate col-12 editBtn">编辑</a>
+                                <a class="hvr-icon-sink-away col-12 delBtn">删除</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
 
                 <div class="col-md-2 agileits-w3layouts-bnt" style="float:right;">
-                    <div class="bg-danger dark pv10 text-white fw100 text-center"><a href="">添加活动</a></div>
+                    <div class="bg-danger dark pv10 text-white fw100 text-center"><a class="addActivity" href="/sport/addSport">添加活动</a></div>
                 </div>
 
             </table>
