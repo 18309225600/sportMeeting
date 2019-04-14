@@ -10,7 +10,7 @@
         <ul id="menu" >
             <li><a href="${ctx}/index"><i class="fa fa-tachometer"></i> <span>个人信息</span><div class="personal"></div></a></li>
             <li><a href="${ctx}/sport/pages"><i class="fa fa-envelope nav_icon"></i><span>活动管理</span><div class="clearfix"></div></a></li>
-            <li><a href="#"><i class="fa fa-picture-o"></i><span>比赛项目管理</span><div class="clearfix"></div></a></li>
+            <li><a href="${ctx}/sport/items"><i class="fa fa-picture-o"></i><span>比赛项目管理</span><div class="clearfix"></div></a></li>
             <li><a href="#"><i class="fa fa-bullhorn"></i><span>项目报名</span><div class="clearfix"></div></a></li>
             <li><a href="#"><i class="fa fa-glide-g"></i><span>录入分数</span><div class="clearfix"></div></a></li>
             <li><a href="#"><i class="fa  fa-yoast"></i><span>查看排行</span><div class="clearfix"></div></a></li>

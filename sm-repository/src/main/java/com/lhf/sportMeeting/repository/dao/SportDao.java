@@ -41,6 +41,7 @@ public class SportDao {
     public PageInfo<SportItem> itemList(Long sportId, Integer pageNo, Integer pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         Weekend<SportItem> weekend = new Weekend<>(SportItem.class);
+        weekend.setOrderByClause("created_at desc,id desc");
         WeekendCriteria<SportItem, Object> criteria = weekend.weekendCriteria();
         criteria.andIsNull(SportItem::getDeletedAt);
         if (sportId!=null){
@@ -81,7 +82,7 @@ public class SportDao {
     public List<SportItem> querySportItemBySportId(Long sportId) {
         Weekend<SportItem> weekend = new Weekend<>(SportItem.class);
         WeekendCriteria<SportItem, Object> criteria = weekend.weekendCriteria();
-
+        criteria.andIsNull(SportItem::getDeletedAt);
         if (sportId!=null){
             Sport sport = querySportById(sportId);
             String sportItems = sport.getSportItems();
@@ -113,6 +114,26 @@ public class SportDao {
             sportMapper.insertSelective(sport);
         }else{
             sportMapper.updateByPrimaryKeySelective(sport);
+        }
+    }
+
+    public SportItem querySportItemById(Long itemId) {
+        Objects.requireNonNull(itemId);
+        SportItem sportItem = sportItemMapper.selectByPrimaryKey(itemId);
+        if (sportItem!=null&&sportItem.getDeletedAt()==null){
+            return sportItem;
+        }
+        return null;
+    }
+
+    public void merge(SportItem sportItem) {
+        Objects.requireNonNull(sportItem);
+
+        if (sportItem.getId()==null){
+            sportItem.setCreatedAt(TimeUtils.currentTime());
+            sportItemMapper.insertSelective(sportItem);
+        }else{
+            sportItemMapper.updateByPrimaryKeySelective(sportItem);
         }
     }
 }

@@ -8,6 +8,7 @@ import com.lhf.sportMeeting.domain.entity.Sport;
 import com.lhf.sportMeeting.domain.entity.SportItem;
 import com.lhf.sportMeeting.domain.entity.SportItemJoin;
 import com.lhf.sportMeeting.facade.data.input.SportInputDto;
+import com.lhf.sportMeeting.facade.data.input.SportItemInputDto;
 import com.lhf.sportMeeting.service.SportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,6 +76,11 @@ public class SportController {
         return WebErrCode.SM_SYS_OP_SUCC.getMsg();
     }
 
+    /**
+     * 删除活动
+     * @param sportId
+     * @return
+     */
     @GetMapping("/{sportId}/delSport")
     @ResponseBody
     public String delSport(@PathVariable("sportId")Long sportId){
@@ -95,6 +101,45 @@ public class SportController {
         model.put("pageNo",page.getPageNo());
         model.put("list",pageInfo);
         return "sport/itemList";
+    }
+
+    /**
+     * 添加比赛项目页面
+     * @return
+     */
+    @GetMapping("/itemOpPage")
+    public String itemOpPage(Long itemId,Map model){
+        if (itemId!=null){
+            SportItem item = sportService.querySportItem(itemId);
+            model.put("item",item);
+        }
+        return "sport/itemOpPage";
+    }
+
+    /**
+     * 删除项目
+     * @param itemId
+     * @return
+     */
+    @GetMapping("/{itemId}/delSportItem")
+    @ResponseBody
+    public String delSportItem(@PathVariable("itemId")Long itemId){
+        String msg = sportService.delSportItem(itemId);
+        return msg;
+    }
+
+
+    /**
+     * 保存运动项目
+     * @param input
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/saveItem")
+    public String saveItem(@RequestBody SportItemInputDto input){
+        SportItem item = input.transform();
+        String msg = sportService.saveItem(item);
+        return msg;
     }
 
 

@@ -23,4 +23,10 @@ public interface SportService {
     void saveSport(Sport sport);
 
     String delSport(Long sportId);
+
+    SportItem querySportItem(Long itemId);
+
+    String delSportItem(Long itemId);
+
+    String saveItem(SportItem item);
 }

@@ -67,4 +67,36 @@ public class SportServiceImpl implements SportService {
         sportDao.merge(del);
         return WebErrCode.SM_SYS_OP_SUCC.getMsg();
     }
+
+    @Override
+    public SportItem querySportItem(Long itemId) {
+        return sportDao.querySportItemById(itemId);
+    }
+
+    @Override
+    public String delSportItem(Long itemId) {
+        SportItem sportItem = sportDao.querySportItemById(itemId);
+        if (sportItem==null){
+            return WebErrCode.SM_SYS_OPTION_NOT_EXSIT.getMsg();
+        }
+
+        SportItem del = new SportItem();
+        del.setId(itemId);
+        del.setDeletedAt(TimeUtils.currentTime());
+        sportDao.merge(del);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
+    }
+
+    @Override
+    public String saveItem(SportItem item) {
+        if (item.getId()!=null){
+            SportItem sportItem = sportDao.querySportItemById(item.getId());
+            if (sportItem==null){
+                return WebErrCode.SM_SYS_OPTION_NOT_EXSIT.getMsg();
+            }
+        }
+
+        sportDao.merge(item);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
+    }
 }

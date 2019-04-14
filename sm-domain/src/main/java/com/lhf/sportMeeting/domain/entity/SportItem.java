@@ -38,6 +38,9 @@ public class SportItem {
     @Column(name = "record_sport_id")
     private Long recordSportId;
 
+    @Column(name = "record_sport_name")
+    private String recordSportName;
+
     /**
      * 记录保持者名称
      */
@@ -158,6 +161,20 @@ public class SportItem {
      */
     public void setRecordSportId(Long recordSportId) {
         this.recordSportId = recordSportId;
+    }
+
+    /**
+     * @return record_sport_name
+     */
+    public String getRecordSportName() {
+        return recordSportName;
+    }
+
+    /**
+     * @param recordSportName
+     */
+    public void setRecordSportName(String recordSportName) {
+        this.recordSportName = recordSportName == null ? null : recordSportName.trim();
     }
 
     /**

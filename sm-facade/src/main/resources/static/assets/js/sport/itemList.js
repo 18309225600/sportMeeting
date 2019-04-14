@@ -7,7 +7,17 @@ $(document).ready(function(){
 });
 
 var bind = function () {
-
+    //删除按钮
+    $("a.delBtn").on("click",function () {
+        var id = $(this).parents("tr").find("input.id").val();
+        $.ajax("/sport/"+id+"/delSportItem",{
+            async: true,
+            success:function (data) {
+                alert(data);
+                window.location.reload();
+            }
+        });
+    });
 }
 
 
