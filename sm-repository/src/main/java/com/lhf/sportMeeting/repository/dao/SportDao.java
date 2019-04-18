@@ -136,4 +136,32 @@ public class SportDao {
             sportItemMapper.updateByPrimaryKeySelective(sportItem);
         }
     }
+
+    public List<Sport> allSport() {
+        Weekend<Sport> weekend = new Weekend<>(Sport.class);
+        weekend.setOrderByClause("created_at desc,id desc");
+        weekend.weekendCriteria().andIsNull(Sport::getDeletedAt);
+        return sportMapper.selectByExample(weekend);
+    }
+
+    public void merge(SportItemJoin join) {
+        if (join.getId()==null){
+            join.setCreatedAt(TimeUtils.currentTime());
+            sportItemJoinMapper.insertSelective(join);
+        }else{
+            sportItemJoinMapper.updateByPrimaryKeySelective(join);
+        }
+    }
+
+    public List<SportItemJoin> queryJoin(Long sportId, Long sportItemId) {
+        Weekend<SportItemJoin> weekend = new Weekend<>(SportItemJoin.class);
+        weekend.weekendCriteria().andIsNull(SportItemJoin::getDeletedAt).andEqualTo(SportItemJoin::getSportId,sportId).andEqualTo(SportItemJoin::getItemId,sportItemId);
+        return sportItemJoinMapper.selectByExample(weekend);
+    }
+
+    public SportItemJoin queryJoinByUserAndSportAndItem(long userId, Long sportId, Long sportItemId) {
+        Weekend<SportItemJoin> weekend = new Weekend<>(SportItemJoin.class);
+        weekend.weekendCriteria().andIsNull(SportItemJoin::getDeletedAt).andEqualTo(SportItemJoin::getUserId,userId).andEqualTo(SportItemJoin::getSportId,sportId).andEqualTo(SportItemJoin::getItemId,sportItemId);
+        return sportItemJoinMapper.selectOneByExample(weekend);
+    }
 }

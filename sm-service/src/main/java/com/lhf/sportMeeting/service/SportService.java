@@ -29,4 +29,12 @@ public interface SportService {
     String delSportItem(Long itemId);
 
     String saveItem(SportItem item);
+
+    List<Sport> allSport();
+
+    String join(Long sportId, Long sportItemId);
+
+    List<SportItemJoin> querySportItemJoins(Long sportId, Long sportItemId);
+
+    String score(Long sportId, Long sportItemId, Long userId,Integer score,String realScore);
 }
