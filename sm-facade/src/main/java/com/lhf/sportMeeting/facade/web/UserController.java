@@ -49,4 +49,17 @@ public class UserController {
         model.put("list",pageInfo);
         return "user/list";
     }
+
+    /**
+     * 更改用户角色
+     * @param userId
+     * @return
+     */
+    @OpLog("更改用户角色")
+    @GetMapping("/changeRole/{userId}")
+    @ResponseBody
+    public String changeRole(@PathVariable("userId")Long userId){
+        String msg = userService.changeRole(userId);
+        return msg;
+    }
 }

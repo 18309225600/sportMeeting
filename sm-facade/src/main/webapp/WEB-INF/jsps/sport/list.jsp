@@ -53,6 +53,7 @@
                             <td>
                                 <a href="/sport/addSport?sportId=${detail.id}" class="hvr-icon-rotate col-12 editBtn">编辑</a>
                                 <a class="hvr-icon-sink-away col-12 delBtn">删除</a>
+                                <a href="/sport/items1?sportId=${detail.id}" class="hvr-icon-forward col-2">比赛项目</a>
                             </td>
                         </tr>
                     </c:forEach>

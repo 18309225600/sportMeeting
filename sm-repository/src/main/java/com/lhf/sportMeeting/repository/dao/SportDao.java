@@ -75,6 +75,7 @@ public class SportDao {
         PageHelper.startPage(pageNo,pageSize);
 
         Weekend<SportItemJoin> weekend = new Weekend<>(SportItemJoin.class);
+        weekend.setOrderByClause("score desc");
         weekend.weekendCriteria().andIsNull(SportItemJoin::getDeletedAt).andEqualTo(SportItemJoin::getSportId,sportId).andEqualTo(SportItemJoin::getItemId,itemId);
         return new PageInfo<>(sportItemJoinMapper.selectByExample(weekend));
     }

@@ -42,16 +42,24 @@
                     <th>手机号</th>
                     <th>邮箱</th>
                     <th>角色</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${list.list}" var="detail">
                     <tr>
+                        <input type="hidden" class="userId" value="${detail.id}"/>
                         <td data-th="Name"><span class="bt-content">${detail.username}</span></td>
                         <td data-th="Name"><span class="bt-content">${detail.gender}</span></td>
                         <td data-th="Name"><span class="bt-content">${detail.phone}</span></td>
                         <td data-th="Name"><span class="bt-content">${detail.email}</span></td>
                         <td data-th="Name"><span class="bt-content">${detail.role eq 'user'?'普通用户':'管理员'}</span></td>
+                        <td>
+                            <a class="hvr-icon-forward col-2 changeRole">
+                                <c:if test="${detail.role eq 'admin'}">降权为普通用户</c:if>
+                                <c:if test="${detail.role eq 'user'}">升级为管理员</c:if>
+                            </a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

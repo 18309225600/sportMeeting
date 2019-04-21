@@ -107,6 +107,22 @@ public class SportController {
     }
 
     /**
+     * 比赛项目列表
+     * @param model
+     * @param sportId
+     * @param page
+     * @return
+     */
+    @GetMapping("/items1")
+    public String itemList1(Map model,Long sportId,PageIn page){
+        PageInfo<SportItem> pageInfo = sportService.itemList(sportId,page.getPageNo(),page.getPageSize());
+        model.put("sportId",sportId);
+        model.put("pageNo",page.getPageNo());
+        model.put("list",pageInfo);
+        return "sport/itemList1";
+    }
+
+    /**
      * 添加比赛项目页面
      * @return
      */
@@ -233,6 +249,8 @@ public class SportController {
         PageInfo<SportItemJoin> pageInfo = sportService.joinList(sportId,sportItemId,page.getPageNo(),page.getPageSize());
         model.put("pageNo",page.getPageNo());
         model.put("list",pageInfo);
+        model.put("sportId",sportId);
+        model.put("itemId",sportItemId);
         return "sport/joinList";
     }
 

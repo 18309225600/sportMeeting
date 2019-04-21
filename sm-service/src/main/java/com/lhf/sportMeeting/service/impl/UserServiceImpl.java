@@ -70,6 +70,20 @@ public class UserServiceImpl implements UserService {
         return userDao.list(pageNo,pageSize);
     }
 
+    @Override
+    public String changeRole(Long userId) {
+        User user = userDao.queryUserById(userId);
+        if (user==null){
+            return WebErrCode.SM_SYS_OPTION_NOT_EXSIT.getMsg();
+        }
+
+        User update = new User();
+        update.setId(userId);
+        update.setRole(user.getRole().equalsIgnoreCase("admin")?"user":"admin");
+        userDao.merge(update);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
+    }
+
     private boolean singleEmail(String email) {
         List<User> users = userDao.queryUserByEmail(email);
         if (CollectionUtils.isEmpty(users)){

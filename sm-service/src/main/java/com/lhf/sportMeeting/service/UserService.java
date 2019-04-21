@@ -13,4 +13,6 @@ public interface UserService {
     String updateUser(Long userId, User inputUser);
 
     PageInfo<User> list(Integer pageNo, Integer pageSize);
+
+    String changeRole(Long userId);
 }

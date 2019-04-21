@@ -7,7 +7,18 @@ $(document).ready(function(){
 });
 
 var bind = function () {
+    //操作按钮
+    $("a.changeRole").on("click",function () {
+        var userId = $(this).parents("tr").find("input.userId").val();
 
+        $.ajax("/user/changeRole/"+userId,{
+            async: true,
+            success:function (data) {
+                alert(data);
+                window.location.reload();
+            }
+        });
+    });
 }
 
 

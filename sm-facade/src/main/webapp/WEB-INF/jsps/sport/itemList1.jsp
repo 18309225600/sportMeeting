@@ -33,30 +33,37 @@
     <!--/content-inner-->
     <div class="left-content">
         <div class="w3l-table-info">
-            <h2>运动会活动管理</h2>
+            <h2>比赛项目管理</h2>
             <table id="table">
                 <thead>
                 <tr>
-                    <th>活动名称</th>
                     <th>项目名称</th>
-                    <th>参赛人</th>
-                    <th>得分</th>
-                    <th>成绩</th>
+                    <th>项目最大人数</th>
+                    <th>项目记录</th>
+                    <th>项目记录创建时间</th>
+                    <th>项目记录所属活动</th>
+                    <th>项目记录保持者姓名</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <input type="hidden" class="sportId" value="${sportId}"/>
-                <input type="hidden" class="itemId" value="${itemId}"/>
+                <input type="hidden" name="sportId" value="${sportId}"/>
                 <c:forEach items="${list.list}" var="detail">
                     <tr>
-                        <td data-th="Name"><span class="bt-content">${detail.sportName}</span></td>
+                        <input type="hidden" class="id" value="${detail.id}">
                         <td data-th="Name"><span class="bt-content">${detail.itemName}</span></td>
-                        <td data-th="Name"><span class="bt-content">${detail.userName}</span></td>
-                        <td data-th="Name"><span class="bt-content">${detail.score}</span></td>
-                        <td data-th="Name"><span class="bt-content">${detail.realScore}</span></td>
+                        <td data-th="Age"><span class="bt-content">${detail.itemMaxUserNum}</span></td>
+                        <td data-th="Gender"><span class="bt-content">${detail.record}</span></td>
+                        <td data-th="Age"><span class="bt-content"><fmt:formatDate value="${detail.recordAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.recordSportName}</span></td>
+                        <td data-th="Gender"><span class="bt-content">${detail.recordName}</span></td>
+                        <th>
+                            <a href="/sport/joinList?sportItemId=${detail.id}&sportId=${sportId}" class="hvr-icon-rotate col-12 editBtn">报名信息</a>
+                        </th>
                     </tr>
                 </c:forEach>
                 </tbody>
+
             </table>
 
             <%--pageInfo--%>
@@ -75,7 +82,7 @@
         </div>
     </div>
 </div>
-<script src="/static/assets/js/sport/joinList.js"></script>
+<script src="/static/assets/js/sport/itemList.js"></script>
 <script>
     var toggle = true;
 
