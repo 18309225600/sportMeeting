@@ -23,55 +23,52 @@
     <!-- lined-icons -->
     <link rel="stylesheet" href="/static/assets/css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/table-style.css" />
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/basictable.css" />
-    <script type="text/javascript" src="/static/assets/js/jquery.basictable.min.js"></script>
 </head>
 <body>
+
 <jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 <div class="page-container">
     <!--/content-inner-->
     <div class="left-content">
-        <div class="w3l-table-info">
-            <h2>操作日志管理</h2>
-            <table id="table">
-                <thead>
-                <tr>
-                    <th>操作人</th>
-                    <th>操作时间</th>
-                    <th>操作事件</th>
-                    <th>远端IP</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${list.list}" var="detail">
-                    <tr>
-                        <td><span class="bt-content">${detail.username}</span></td>
-                        <td><span class="bt-content"><fmt:formatDate value="${detail.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></td>
-                        <td><span class="bt-content">${detail.operation}</span></td>
-                        <td><span class="bt-content">${detail.remoteIp}</span></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+        <div class="mother-grid-inner">
+            <div class="validation-system">
+                <div class="validation-form">
+                    <form>
+                        <input type="hidden" name="id" class="id" value="${item.id}">
+                        <div class="vali-form">
+                            <div class="col-md-6 form-group1">
+                                <label class="control-label">比赛项目名称</label>
+                                <input type="text" name="itemName" placeholder="比赛项目名称" class="itemName" required="" value="${item.itemName}">
+                            </div>
+                        </div>
 
-            <%--pageInfo--%>
-            <br>
-            <div style="text-align: center;">
-                <input type="hidden" id="pageNo" value="${pageNo}"/>
-                <input type="hidden" id="totalPage" value="${list.pages}"/>
-                <div>
-                    <strong style="float: left;">当前第${list.pageNum}/${list.pages}页，共记${list.total}条数据</strong>
-                    <button type="buttom" id="firstPage" class="btn btn-secondary">首页</button>
-                    <button type="buttom" id="proidPage" class="btn btn-success">上一页</button>
-                    <button type="buttom" id="nextPage" class="btn btn-success">下一页</button>
-                    <button type="buttom" id="endPage" class="btn btn-secondary">尾页</button>
+                        <div class="col-md-12 form-group1 group-mail">
+                            <label class="control-label ">最大报名人数（不填默认10个）</label>
+                            <input type="text" name="itemMaxUserNum" placeholder="最大报名人数" class="itemMaxUserNum" required="" value="${item.itemMaxUserNum}">
+                        </div>
+
+
+                        <div class="col-md-12 form-group1 ">
+                            <label class="control-label">比赛项目说明</label>
+                            <textarea name="itemDesc" class="itemDesc" placeholder="比赛项目说明" required="">${item.itemDesc}</textarea>
+                        </div>
+
+
+                        <div class="col-md-12 form-group">
+                            <button type="button" class="btn btn-primary addBtn">Submit</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </form>
+
+                    <!---->
                 </div>
+
             </div>
         </div>
     </div>
 </div>
-<script src="/static/assets/js/oplog/list.js"></script>
+<script src="/static/assets/js/sport/itemOpPage.js"></script>
 <script>
     var toggle = true;
 

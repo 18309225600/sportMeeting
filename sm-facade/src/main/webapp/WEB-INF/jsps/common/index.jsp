@@ -25,6 +25,8 @@
     <!-- //lined-icons -->
 </head>
 <body>
+
+<jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 <div class="page-container">
     <!--/content-inner-->
     <div class="left-content">
@@ -45,14 +47,10 @@
                             <li ><i class="fa fa-inbox"></i>账号注册时间 <span>${sessionScope.user.createAt}</span><div class="clearfix"></div></li>
                         </ul>
                     </nav>
-
                 </div>
             </div>
         </div>
     </div>
-    <!--//content-inner-->
-    <!--/sidebar-menu-->
-    <jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 </div>
 <script>
     var toggle = true;

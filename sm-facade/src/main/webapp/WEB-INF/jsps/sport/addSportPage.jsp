@@ -23,55 +23,63 @@
     <!-- lined-icons -->
     <link rel="stylesheet" href="/static/assets/css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/table-style.css" />
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/basictable.css" />
-    <script type="text/javascript" src="/static/assets/js/jquery.basictable.min.js"></script>
 </head>
 <body>
+
 <jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 <div class="page-container">
     <!--/content-inner-->
     <div class="left-content">
-        <div class="w3l-table-info">
-            <h2>操作日志管理</h2>
-            <table id="table">
-                <thead>
-                <tr>
-                    <th>操作人</th>
-                    <th>操作时间</th>
-                    <th>操作事件</th>
-                    <th>远端IP</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${list.list}" var="detail">
-                    <tr>
-                        <td><span class="bt-content">${detail.username}</span></td>
-                        <td><span class="bt-content"><fmt:formatDate value="${detail.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></td>
-                        <td><span class="bt-content">${detail.operation}</span></td>
-                        <td><span class="bt-content">${detail.remoteIp}</span></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+        <div class="mother-grid-inner">
+            <div class="validation-system">
+                <div class="validation-form">
+                    <form>
+                        <input type="hidden" name="id" class="id" value="${sport.id}">
+                        <div class="vali-form">
+                            <div class="col-md-6 form-group1">
+                                <label class="control-label">运动会名称</label>
+                                <input type="text" name="name" placeholder="运动会名称" class="name" required="" value="${sport.name}">
+                            </div>
+                        </div>
 
-            <%--pageInfo--%>
-            <br>
-            <div style="text-align: center;">
-                <input type="hidden" id="pageNo" value="${pageNo}"/>
-                <input type="hidden" id="totalPage" value="${list.pages}"/>
-                <div>
-                    <strong style="float: left;">当前第${list.pageNum}/${list.pages}页，共记${list.total}条数据</strong>
-                    <button type="buttom" id="firstPage" class="btn btn-secondary">首页</button>
-                    <button type="buttom" id="proidPage" class="btn btn-success">上一页</button>
-                    <button type="buttom" id="nextPage" class="btn btn-success">下一页</button>
-                    <button type="buttom" id="endPage" class="btn btn-secondary">尾页</button>
+                        <div class="col-md-12 form-group1 group-mail">
+                            <label class="control-label ">开始时间</label>
+                            <input type="date" name="startAt" class="form-control1 ng-invalid ng-invalid-required startAt" ng-model="model.date" required="" value="${sport.startAt}">
+                        </div>
+                        <div class="col-md-12 form-group1 group-mail">
+                            <label class="control-label ">结束时间</label>
+                            <input type="date" name="endAt" class="form-control1 ng-invalid ng-invalid-required endAt" ng-model="model.date" required="" value="${sport.endAt}">
+                        </div>
+
+                        <div class="col-md-12 form-group1 ">
+                            <label class="control-label">备注及规则说明</label>
+                            <textarea name="remark" class="remark" placeholder="请输入备注信息" required="">${sport.remark}</textarea>
+                        </div>
+
+                        <div class="form-group1">
+                            <label class="col-sm-2 control-label">运动项</label>
+                            <div class="col-sm-8">
+                                <c:forEach items="${sportItems}" var="sportItem">
+                                    <div class="checkbox-inline1"><label><input type="checkbox" value="${sportItem.id}" <c:if test="${fn:contains(sport.sportItems,sportItem.id)}">checked</c:if>> ${sportItem.itemName}</label></div>
+                                </c:forEach>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <button type="button" class="btn btn-primary addBtn">Submit</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </form>
+
+                    <!---->
                 </div>
+
             </div>
         </div>
     </div>
 </div>
-<script src="/static/assets/js/oplog/list.js"></script>
+<script src="/static/assets/js/sport/addSportPage.js"></script>
 <script>
     var toggle = true;
 

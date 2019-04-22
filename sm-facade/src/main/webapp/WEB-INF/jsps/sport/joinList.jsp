@@ -33,23 +33,27 @@
     <!--/content-inner-->
     <div class="left-content">
         <div class="w3l-table-info">
-            <h2>操作日志管理</h2>
+            <h2>运动会活动管理</h2>
             <table id="table">
                 <thead>
                 <tr>
-                    <th>操作人</th>
-                    <th>操作时间</th>
-                    <th>操作事件</th>
-                    <th>远端IP</th>
+                    <th>活动名称</th>
+                    <th>项目名称</th>
+                    <th>参赛人</th>
+                    <th>得分</th>
+                    <th>成绩</th>
                 </tr>
                 </thead>
                 <tbody>
+                <input type="hidden" class="sportId" value="${sportId}"/>
+                <input type="hidden" class="itemId" value="${itemId}"/>
                 <c:forEach items="${list.list}" var="detail">
                     <tr>
-                        <td><span class="bt-content">${detail.username}</span></td>
-                        <td><span class="bt-content"><fmt:formatDate value="${detail.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></td>
-                        <td><span class="bt-content">${detail.operation}</span></td>
-                        <td><span class="bt-content">${detail.remoteIp}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.sportName}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.itemName}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.userName}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.score}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.realScore}</span></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -71,7 +75,7 @@
         </div>
     </div>
 </div>
-<script src="/static/assets/js/oplog/list.js"></script>
+<script src="/static/assets/js/sport/joinList.js"></script>
 <script>
     var toggle = true;
 

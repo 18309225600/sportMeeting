@@ -1,5 +1,6 @@
 package com.lhf.sportMeeting.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.lhf.sportMeeting.common.std.WebException;
 import com.lhf.sportMeeting.common.std.enums.WebErrCode;
 import com.lhf.sportMeeting.common.utils.EncryptionUtils;
@@ -61,6 +62,25 @@ public class UserServiceImpl implements UserService {
 
         inputUser.setId(userId);
         userDao.merge(inputUser);
+        return WebErrCode.SM_SYS_OP_SUCC.getMsg();
+    }
+
+    @Override
+    public PageInfo<User> list(Integer pageNo, Integer pageSize) {
+        return userDao.list(pageNo,pageSize);
+    }
+
+    @Override
+    public String changeRole(Long userId) {
+        User user = userDao.queryUserById(userId);
+        if (user==null){
+            return WebErrCode.SM_SYS_OPTION_NOT_EXSIT.getMsg();
+        }
+
+        User update = new User();
+        update.setId(userId);
+        update.setRole(user.getRole().equalsIgnoreCase("admin")?"user":"admin");
+        userDao.merge(update);
         return WebErrCode.SM_SYS_OP_SUCC.getMsg();
     }
 

@@ -33,23 +33,33 @@
     <!--/content-inner-->
     <div class="left-content">
         <div class="w3l-table-info">
-            <h2>操作日志管理</h2>
+            <h2>用户管理</h2>
             <table id="table">
                 <thead>
                 <tr>
-                    <th>操作人</th>
-                    <th>操作时间</th>
-                    <th>操作事件</th>
-                    <th>远端IP</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>手机号</th>
+                    <th>邮箱</th>
+                    <th>角色</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${list.list}" var="detail">
                     <tr>
-                        <td><span class="bt-content">${detail.username}</span></td>
-                        <td><span class="bt-content"><fmt:formatDate value="${detail.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></td>
-                        <td><span class="bt-content">${detail.operation}</span></td>
-                        <td><span class="bt-content">${detail.remoteIp}</span></td>
+                        <input type="hidden" class="userId" value="${detail.id}"/>
+                        <td data-th="Name"><span class="bt-content">${detail.username}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.gender}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.phone}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.email}</span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.role eq 'user'?'普通用户':'管理员'}</span></td>
+                        <td>
+                            <a class="hvr-icon-forward col-2 changeRole">
+                                <c:if test="${detail.role eq 'admin'}">降权为普通用户</c:if>
+                                <c:if test="${detail.role eq 'user'}">升级为管理员</c:if>
+                            </a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -71,7 +81,7 @@
         </div>
     </div>
 </div>
-<script src="/static/assets/js/oplog/list.js"></script>
+<script src="/static/assets/js/user/list.js"></script>
 <script>
     var toggle = true;
 

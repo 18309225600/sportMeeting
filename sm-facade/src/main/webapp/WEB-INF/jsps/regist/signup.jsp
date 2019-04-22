@@ -35,7 +35,7 @@
 			</div>
 			<div class="password-agileits">
 				<span class="username">密码:</span>
-				<input type="password" name="password" class="password" placeholder="" required="">
+				<input type="password" name="password" class="password" placeholder="" required="" maxlength="10" minlength="5">
 				<div class="clearfix"></div>
 			</div>
 			<div class="phone">

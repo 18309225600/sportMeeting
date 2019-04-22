@@ -33,26 +33,40 @@
     <!--/content-inner-->
     <div class="left-content">
         <div class="w3l-table-info">
-            <h2>操作日志管理</h2>
+            <h2>比赛项目管理</h2>
             <table id="table">
                 <thead>
                 <tr>
-                    <th>操作人</th>
-                    <th>操作时间</th>
-                    <th>操作事件</th>
-                    <th>远端IP</th>
+                    <th>项目名称</th>
+                    <th>项目最大人数</th>
+                    <th>项目记录</th>
+                    <th>项目记录创建时间</th>
+                    <th>项目记录所属活动</th>
+                    <th>项目记录保持者姓名</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${list.list}" var="detail">
                     <tr>
-                        <td><span class="bt-content">${detail.username}</span></td>
-                        <td><span class="bt-content"><fmt:formatDate value="${detail.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></td>
-                        <td><span class="bt-content">${detail.operation}</span></td>
-                        <td><span class="bt-content">${detail.remoteIp}</span></td>
+                        <input type="hidden" class="id" value="${detail.id}">
+                        <td data-th="Name"><span class="bt-content">${detail.itemName}</span></td>
+                        <td data-th="Age"><span class="bt-content">${detail.itemMaxUserNum}</span></td>
+                        <td data-th="Gender"><span class="bt-content">${detail.record}</span></td>
+                        <td data-th="Age"><span class="bt-content"><fmt:formatDate value="${detail.recordAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
+                        <td data-th="Name"><span class="bt-content">${detail.recordSportName}</span></td>
+                        <td data-th="Gender"><span class="bt-content">${detail.recordName}</span></td>
+                        <th>
+                            <a href="/sport/itemOpPage?itemId=${detail.id}" class="hvr-icon-rotate col-12 editBtn">编辑</a>
+                            <a class="hvr-icon-sink-away col-12 delBtn">删除</a>
+                        </th>
                     </tr>
                 </c:forEach>
                 </tbody>
+
+                <div class="col-md-2 agileits-w3layouts-bnt" style="float:right;">
+                    <div class="bg-danger dark pv10 text-white fw100 text-center"><a class="addActivity" href="/sport/itemOpPage">添加项目</a></div>
+                </div>
             </table>
 
             <%--pageInfo--%>
@@ -71,7 +85,7 @@
         </div>
     </div>
 </div>
-<script src="/static/assets/js/oplog/list.js"></script>
+<script src="/static/assets/js/sport/itemList.js"></script>
 <script>
     var toggle = true;
 

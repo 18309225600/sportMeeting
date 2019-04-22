@@ -1,25 +1,13 @@
 $(document).ready(function(){
 
-    listPageData("/sport/pages");
+    //获取sportId&&itemId
+    var sportId=$("input.sportId").val();
+    var itemId=$("input.itemId").val();
 
-    bind();
+    listPageData("/sport/joinList?sportId="+sportId+"&sportItemId="+itemId);
+
 
 });
-
-var bind = function () {
-    //删除按钮
-    $("a.delBtn").on("click",function () {
-        var id = $(this).parents("tr").find("input.id").val();
-        $.ajax("/sport/"+id+"/delSport",{
-            async: true,
-            success:function (data) {
-                alert(data);
-                window.location.reload();
-            }
-        });
-    });
-}
-
 
 //获取列表分页数据  刷新页面
 this.listPageData = function(url){

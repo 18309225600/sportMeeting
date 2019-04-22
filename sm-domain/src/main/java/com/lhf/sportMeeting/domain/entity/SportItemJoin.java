@@ -27,7 +27,16 @@ public class SportItemJoin {
     @Column(name = "item_name")
     private String itemName;
 
-    private String score;
+    /**
+     * 评分
+     */
+    private Integer score;
+
+    /**
+     * 真正的成绩
+     */
+    @Column(name = "real_score")
+    private String realScore;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -134,17 +143,39 @@ public class SportItemJoin {
     }
 
     /**
-     * @return score
+     * 获取评分
+     *
+     * @return score - 评分
      */
-    public String getScore() {
+    public Integer getScore() {
         return score;
     }
 
     /**
-     * @param score
+     * 设置评分
+     *
+     * @param score 评分
      */
-    public void setScore(String score) {
-        this.score = score == null ? null : score.trim();
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    /**
+     * 获取真正的成绩
+     *
+     * @return real_score - 真正的成绩
+     */
+    public String getRealScore() {
+        return realScore;
+    }
+
+    /**
+     * 设置真正的成绩
+     *
+     * @param realScore 真正的成绩
+     */
+    public void setRealScore(String realScore) {
+        this.realScore = realScore == null ? null : realScore.trim();
     }
 
     /**

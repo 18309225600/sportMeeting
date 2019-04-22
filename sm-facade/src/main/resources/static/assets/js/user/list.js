@@ -1,16 +1,17 @@
 $(document).ready(function(){
 
-    listPageData("/sport/pages");
+    listPageData("/user/list");
 
     bind();
 
 });
 
 var bind = function () {
-    //删除按钮
-    $("a.delBtn").on("click",function () {
-        var id = $(this).parents("tr").find("input.id").val();
-        $.ajax("/sport/"+id+"/delSport",{
+    //操作按钮
+    $("a.changeRole").on("click",function () {
+        var userId = $(this).parents("tr").find("input.userId").val();
+
+        $.ajax("/user/changeRole/"+userId,{
             async: true,
             success:function (data) {
                 alert(data);

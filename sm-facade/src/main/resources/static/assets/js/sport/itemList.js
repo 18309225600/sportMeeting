@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-    listPageData("/sport/pages");
 
+    listPageData("/sport/items");
     bind();
 
 });
@@ -10,7 +10,7 @@ var bind = function () {
     //删除按钮
     $("a.delBtn").on("click",function () {
         var id = $(this).parents("tr").find("input.id").val();
-        $.ajax("/sport/"+id+"/delSport",{
+        $.ajax("/sport/"+id+"/delSportItem",{
             async: true,
             success:function (data) {
                 alert(data);

@@ -24,7 +24,10 @@ public class SportItem {
     /**
      * 目前记录
      */
-    private String record;
+    private Integer record;
+
+    @Column(name = "real_record")
+    private String realRecord;
 
     /**
      * 记录创建时间
@@ -37,6 +40,9 @@ public class SportItem {
      */
     @Column(name = "record_sport_id")
     private Long recordSportId;
+
+    @Column(name = "record_sport_name")
+    private String recordSportName;
 
     /**
      * 记录保持者名称
@@ -111,7 +117,7 @@ public class SportItem {
      *
      * @return record - 目前记录
      */
-    public String getRecord() {
+    public Integer getRecord() {
         return record;
     }
 
@@ -120,8 +126,22 @@ public class SportItem {
      *
      * @param record 目前记录
      */
-    public void setRecord(String record) {
-        this.record = record == null ? null : record.trim();
+    public void setRecord(Integer record) {
+        this.record = record;
+    }
+
+    /**
+     * @return real_record
+     */
+    public String getRealRecord() {
+        return realRecord;
+    }
+
+    /**
+     * @param realRecord
+     */
+    public void setRealRecord(String realRecord) {
+        this.realRecord = realRecord == null ? null : realRecord.trim();
     }
 
     /**
@@ -158,6 +178,20 @@ public class SportItem {
      */
     public void setRecordSportId(Long recordSportId) {
         this.recordSportId = recordSportId;
+    }
+
+    /**
+     * @return record_sport_name
+     */
+    public String getRecordSportName() {
+        return recordSportName;
+    }
+
+    /**
+     * @param recordSportName
+     */
+    public void setRecordSportName(String recordSportName) {
+        this.recordSportName = recordSportName == null ? null : recordSportName.trim();
     }
 
     /**

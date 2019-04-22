@@ -28,6 +28,7 @@
     <script type="text/javascript" src="/static/assets/js/jquery.basictable.min.js"></script>
 </head>
 <body>
+<jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 <div class="page-container">
     <!--/content-inner-->
     <div class="left-content">
@@ -39,36 +40,46 @@
                         <th>活动名称</th>
                         <th>活动开始时间</th>
                         <th>活动结束时间</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach items="${list.list}" var="detail">
                         <tr>
+                            <input type="hidden" class="id" value="${detail.id}">
                             <td data-th="Name"><span class="bt-content">${detail.name}</span></td>
                             <td data-th="Age"><span class="bt-content"><fmt:formatDate value="${detail.startAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
                             <td data-th="Gender"><span class="bt-content"><fmt:formatDate value="${detail.endAt}" pattern="yyyy-MM-dd"></fmt:formatDate></span></td>
+                            <td>
+                                <a href="/sport/addSport?sportId=${detail.id}" class="hvr-icon-rotate col-12 editBtn">编辑</a>
+                                <a class="hvr-icon-sink-away col-12 delBtn">删除</a>
+                                <a href="/sport/items1?sportId=${detail.id}" class="hvr-icon-forward col-2">比赛项目</a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
 
-                <%--pageInfo--%>
-                <div style="text-align: center;">
-                    <input type="hidden" id="pageNo" value="${pageNo}"/>
-                    <input type="hidden" id="totalPage" value="${list.pages}"/>
-                    <div>
-                        <strong style="float: left;">当前第${list.pageNum}/${list.pages}页，共记${list.total}条数据</strong>
-                        <button type="buttom" id="firstPage" class="btn btn-secondary">首页</button>
-                        <button type="buttom" id="proidPage" class="btn btn-success">上一页</button>
-                        <button type="buttom" id="nextPage" class="btn btn-success">下一页</button>
-                        <button type="buttom" id="endPage" class="btn btn-secondary">尾页</button>
-                    </div>
+                <div class="col-md-2 agileits-w3layouts-bnt" style="float:right;">
+                    <div class="bg-danger dark pv10 text-white fw100 text-center"><a class="addActivity" href="/sport/addSport">添加活动</a></div>
                 </div>
+
             </table>
+
+            <%--pageInfo--%>
+            <br>
+            <div style="text-align: center;">
+                <input type="hidden" id="pageNo" value="${pageNo}"/>
+                <input type="hidden" id="totalPage" value="${list.pages}"/>
+                <div>
+                    <strong style="float: left;">当前第${list.pageNum}/${list.pages}页，共记${list.total}条数据</strong>
+                    <button type="buttom" id="firstPage" class="btn btn-secondary">首页</button>
+                    <button type="buttom" id="proidPage" class="btn btn-success">上一页</button>
+                    <button type="buttom" id="nextPage" class="btn btn-success">下一页</button>
+                    <button type="buttom" id="endPage" class="btn btn-secondary">尾页</button>
+                </div>
+            </div>
         </div>
     </div>
-    <!--//content-inner-->
-    <!--/sidebar-menu-->
-    <jsp:include  page="/WEB-INF/jsps/common/navigator.jsp" flush="true"/>
 </div>
 <script src="/static/assets/js/sport/list.js"></script>
 <script>
