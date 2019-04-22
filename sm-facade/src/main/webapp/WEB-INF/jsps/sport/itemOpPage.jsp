@@ -53,6 +53,15 @@
                             <textarea name="itemDesc" class="itemDesc" placeholder="比赛项目说明" required="">${item.itemDesc}</textarea>
                         </div>
 
+                        <div class="col-md-12 form-group1 group-mail">
+                            <label class="control-label ">开始时间</label>
+                            <input type="date" name="startAt" class="form-control1 ng-invalid ng-invalid-required startAt" ng-model="model.date" required="" value="${sport.startAt}">
+                        </div>
+
+                        <div class="col-md-12 form-group1 group-mail">
+                            <label class="control-label ">结束时间</label>
+                            <input type="date" name="endAt" class="form-control1 ng-invalid ng-invalid-required endAt" ng-model="model.date" required="" value="${sport.endAt}">
+                        </div>
 
                         <div class="col-md-12 form-group">
                             <button type="button" class="btn btn-primary addBtn">Submit</button>

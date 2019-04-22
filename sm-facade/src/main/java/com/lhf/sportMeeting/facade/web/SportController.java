@@ -182,7 +182,8 @@ public class SportController {
     @ResponseBody
     @GetMapping("/{sportId}/sportItems")
     public List<SportItem> getSportItem(@PathVariable("sportId")Long sportId){
-        return sportService.querySportItems(sportId);
+        List<SportItem> sportItems = sportService.querySportItems(sportId);
+        return sportItems;
     }
 
     /**

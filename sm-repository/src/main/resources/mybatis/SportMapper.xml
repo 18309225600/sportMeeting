@@ -61,6 +61,19 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="start_at" jdbcType="TIMESTAMP" property="startAt" />
     <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+    <result column="sport_items" jdbcType="VARCHAR" property="sportItems" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.lhf.sportMeeting.domain.entity.Sport">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="start_at" jdbcType="TIMESTAMP" property="startAt" />
+    <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
     <result column="remark" jdbcType="LONGVARCHAR" property="remark" />

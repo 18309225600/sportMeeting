@@ -12,9 +12,10 @@ var bind = function () {
         var itemName = $("input.itemName").val();
         var itemMaxUserNum = $("input.itemMaxUserNum").val();
         var itemDesc = $("textarea.itemDesc").val();
+        var startAt = $("input.startAt").val();
+        var endAt = $("input.endAt").val();
 
-
-        var param = {"itemId":id,"itemName":itemName,"itemMaxUserNum":itemMaxUserNum,"itemDesc":itemDesc}
+        var param = {"itemId":id,"itemName":itemName,"itemMaxUserNum":itemMaxUserNum,"itemDesc":itemDesc,"startAt":startAt,"endAt":endAt}
 
         var url = "/sport/saveItem";
         $.ajax(url,{

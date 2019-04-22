@@ -2,12 +2,16 @@ package com.lhf.sportMeeting.facade.data.input;
 
 import com.lhf.sportMeeting.domain.entity.SportItem;
 
+import java.util.Date;
+
 public class SportItemInputDto {
 
     private Long itemId;
     private String itemName;
     private Integer itemMaxUserNum;
     private String itemDesc;
+    private Date startAt;
+    private Date endAt;
 
     public Long getItemId() {
         return itemId;
@@ -41,6 +45,22 @@ public class SportItemInputDto {
         this.itemDesc = itemDesc;
     }
 
+    public Date getStartAt() {
+        return startAt;
+    }
+
+    public void setStartAt(Date startAt) {
+        this.startAt = startAt;
+    }
+
+    public Date getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(Date endAt) {
+        this.endAt = endAt;
+    }
+
     public SportItem transform() {
         SportItem item = new SportItem();
 
@@ -48,6 +68,8 @@ public class SportItemInputDto {
         item.setItemName(itemName);
         item.setItemMaxUserNum(itemMaxUserNum);
         item.setItemDesc(itemDesc);
+        item.setStartAt(startAt);
+        item.setEndAt(endAt);
 
         return item;
     }

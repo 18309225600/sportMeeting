@@ -50,6 +50,12 @@ public class SportItem {
     @Column(name = "record_name")
     private String recordName;
 
+    @Column(name = "start_at")
+    private Date startAt;
+
+    @Column(name = "end_at")
+    private Date endAt;
+
     @Column(name = "created_at")
     private Date createdAt;
 
@@ -210,6 +216,34 @@ public class SportItem {
      */
     public void setRecordName(String recordName) {
         this.recordName = recordName == null ? null : recordName.trim();
+    }
+
+    /**
+     * @return start_at
+     */
+    public Date getStartAt() {
+        return startAt;
+    }
+
+    /**
+     * @param startAt
+     */
+    public void setStartAt(Date startAt) {
+        this.startAt = startAt;
+    }
+
+    /**
+     * @return end_at
+     */
+    public Date getEndAt() {
+        return endAt;
+    }
+
+    /**
+     * @param endAt
+     */
+    public void setEndAt(Date endAt) {
+        this.endAt = endAt;
     }
 
     /**
