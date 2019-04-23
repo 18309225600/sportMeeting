@@ -44,6 +44,22 @@
     <result column="sport_name" jdbcType="VARCHAR" property="sportName" />
     <result column="item_id" jdbcType="BIGINT" property="itemId" />
     <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="real_score" jdbcType="VARCHAR" property="realScore" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.lhf.sportMeeting.domain.entity.SportItemJoin">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="sport_id" jdbcType="BIGINT" property="sportId" />
+    <result column="sport_name" jdbcType="VARCHAR" property="sportName" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
     <result column="score" jdbcType="VARCHAR" property="score" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />

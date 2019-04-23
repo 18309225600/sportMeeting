@@ -23,6 +23,7 @@
     <!-- lined-icons -->
     <link rel="stylesheet" href="/static/assets/css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
+    <script src="/static/assets/laydate/laydate.js"></script> <!-- 改成你的路径 -->
 </head>
 <body>
 
@@ -55,12 +56,12 @@
 
                         <div class="col-md-12 form-group1 group-mail">
                             <label class="control-label ">开始时间</label>
-                            <input type="date" name="startAt" class="form-control1 ng-invalid ng-invalid-required startAt" ng-model="model.date" required="" value="${sport.startAt}">
+                            <input type="text" class="demo-input startAt" placeholder="请选择日期" id="startAt" value="<fmt:formatDate value="${item.startAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>">
                         </div>
 
                         <div class="col-md-12 form-group1 group-mail">
                             <label class="control-label ">结束时间</label>
-                            <input type="date" name="endAt" class="form-control1 ng-invalid ng-invalid-required endAt" ng-model="model.date" required="" value="${sport.endAt}">
+                            <input type="text" class="demo-input endAt" placeholder="请选择日期" id="endAt" value="<fmt:formatDate value="${item.endAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>">
                         </div>
 
                         <div class="col-md-12 form-group">
@@ -78,6 +79,22 @@
     </div>
 </div>
 <script src="/static/assets/js/sport/itemOpPage.js"></script>
+
+<script>
+    lay('#version').html('-v'+ laydate.v);
+
+    //执行一个laydate实例
+    laydate.render({
+        elem: '.startAt' //指定元素
+        ,type: 'datetime'
+    });
+
+    laydate.render({
+        elem: '.endAt' //指定元素
+        ,type: 'datetime'
+    });
+</script>
+
 <script>
     var toggle = true;
 

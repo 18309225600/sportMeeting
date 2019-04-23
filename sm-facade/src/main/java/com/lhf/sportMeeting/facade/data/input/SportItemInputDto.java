@@ -1,5 +1,6 @@
 package com.lhf.sportMeeting.facade.data.input;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lhf.sportMeeting.domain.entity.SportItem;
 
 import java.util.Date;
@@ -10,7 +11,9 @@ public class SportItemInputDto {
     private String itemName;
     private Integer itemMaxUserNum;
     private String itemDesc;
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date startAt;
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date endAt;
 
     public Long getItemId() {

@@ -33,6 +33,25 @@
     <result column="record_sport_id" jdbcType="BIGINT" property="recordSportId" />
     <result column="record_sport_name" jdbcType="VARCHAR" property="recordSportName" />
     <result column="record_name" jdbcType="VARCHAR" property="recordName" />
+    <result column="start_at" jdbcType="TIMESTAMP" property="startAt" />
+    <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="item_desc" jdbcType="LONGVARCHAR" property="itemDesc" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.lhf.sportMeeting.domain.entity.SportItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_max_user_num" jdbcType="INTEGER" property="itemMaxUserNum" />
+    <result column="record" jdbcType="INTEGER" property="record" />
+    <result column="real_record" jdbcType="VARCHAR" property="realRecord" />
+    <result column="record_at" jdbcType="DATE" property="recordAt" />
+    <result column="record_sport_id" jdbcType="BIGINT" property="recordSportId" />
+    <result column="record_sport_name" jdbcType="VARCHAR" property="recordSportName" />
+    <result column="record_name" jdbcType="VARCHAR" property="recordName" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
     <result column="item_desc" jdbcType="LONGVARCHAR" property="itemDesc" />

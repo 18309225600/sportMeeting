@@ -165,4 +165,10 @@ public class SportDao {
         weekend.weekendCriteria().andIsNull(SportItemJoin::getDeletedAt).andEqualTo(SportItemJoin::getUserId,userId).andEqualTo(SportItemJoin::getSportId,sportId).andEqualTo(SportItemJoin::getItemId,sportItemId);
         return sportItemJoinMapper.selectOneByExample(weekend);
     }
+
+    public List<SportItemJoin> queryJoinByUserAndSportAndItem(Long userId, Long sportId) {
+        Weekend<SportItemJoin> weekend = new Weekend<>(SportItemJoin.class);
+        weekend.weekendCriteria().andIsNull(SportItemJoin::getDeletedAt).andEqualTo(SportItemJoin::getUserId,userId).andEqualTo(SportItemJoin::getSportId,sportId);
+        return sportItemJoinMapper.selectByExample(weekend);
+    }
 }
