@@ -23,7 +23,6 @@
     <!-- lined-icons -->
     <link rel="stylesheet" href="/static/assets/css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
-    <script src="/static/assets/laydate/laydate.js"></script> <!-- 改成你的路径 -->
 </head>
 <body>
 
@@ -34,39 +33,27 @@
         <div class="mother-grid-inner">
             <div class="validation-system">
                 <div class="validation-form">
+                    <h2 id="forms-example" class="">运动会成绩查询</h2>
                     <form>
-                        <input type="hidden" name="id" class="id" value="${item.id}">
-                        <div class="vali-form">
-                            <div class="col-md-6 form-group1">
-                                <label class="control-label">比赛项目名称</label>
-                                <input type="text" name="itemName" placeholder="比赛项目名称" class="itemName" required="" value="${item.itemName}">
-                            </div>
+                        <div class="col-md-12 form-group2 group-mail">
+                            <label class="control-label">运动会</label>
+                            <select class="sport">
+                                <option value="0">请选择</option>
+                                <c:forEach items="${sports}" var="sport">
+                                    <option value="${sport.id}">${sport.name}</option>
+                                </c:forEach>
+                            </select>
                         </div>
 
-                        <div class="col-md-12 form-group1 group-mail">
-                            <label class="control-label ">最大报名人数（不填默认10个）</label>
-                            <input type="text" name="itemMaxUserNum" placeholder="最大报名人数" class="itemMaxUserNum" required="" value="${item.itemMaxUserNum}">
-                        </div>
-
-
-                        <div class="col-md-12 form-group1 ">
-                            <label class="control-label">比赛项目说明</label>
-                            <textarea name="itemDesc" class="itemDesc" placeholder="比赛项目说明" required="">${item.itemDesc}</textarea>
-                        </div>
-
-                        <div class="col-md-12 form-group1 group-mail">
-                            <label class="control-label ">开始时间</label>
-                            <input type="text" class="demo-input startAt" placeholder="请选择日期" id="startAt" value="<fmt:formatDate value="${item.startAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>">
-                        </div>
-
-                        <div class="col-md-12 form-group1 group-mail">
-                            <label class="control-label ">结束时间</label>
-                            <input type="text" class="demo-input endAt" placeholder="请选择日期" id="endAt" value="<fmt:formatDate value="${item.endAt}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>">
+                        <div class="col-md-12 form-group2 group-mail">
+                            <label class="control-label">项目</label>
+                            <select class="sportItem">
+                                <option value="" class="sportItemOp"></option>
+                            </select>
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <button type="button" class="btn btn-primary addBtn">Submit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
+                            <button type="button" class="btn btn-primary scoreBtn">查询成绩</button>
                         </div>
                         <div class="clearfix"> </div>
                     </form>
@@ -78,23 +65,7 @@
         </div>
     </div>
 </div>
-<script src="/static/assets/js/sport/itemOpPage.js"></script>
-
-<script>
-    lay('#version').html('-v'+ laydate.v);
-
-    //执行一个laydate实例
-    laydate.render({
-        elem: '.startAt' //指定元素
-        ,type: 'datetime'
-    });
-
-    laydate.render({
-        elem: '.endAt' //指定元素
-        ,type: 'datetime'
-    });
-</script>
-
+<script src="/static/assets/js/sport/searchScore.js"></script>
 <script>
     var toggle = true;
 

@@ -52,7 +52,6 @@
                             </select>
                         </div>
 
-
                         <div class="col-md-12 form-group">
                             <button type="button" class="btn btn-primary joinBtn">报名</button>
                         </div>

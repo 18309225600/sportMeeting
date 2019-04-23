@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -135,6 +136,20 @@ public class SportServiceImpl implements SportService {
             return WebErrCode.SM_ACTIVITY_USER_MAX_FULL.getMsg();
         }
 
+        //时间重叠 查询此用户已经报名的所有运动会
+        List<SportItemJoin> joinList = sportDao.queryJoinByUserAndSportAndItem(SessionUtils.getUserId(), sportId);
+        Date startAt = sportItem.getStartAt();
+        Date endAt = sportItem.getEndAt();
+        for (SportItemJoin sportItemJoin:joinList){
+            SportItem item = sportDao.querySportItemById(sportItemJoin.getItemId());
+            Date astart = item.getStartAt();
+            Date aend = item.getEndAt();
+
+            if (startAt.after(astart)&&startAt.before(aend)||endAt.after(astart)&&endAt.before(aend)){
+                return "时间有冲突："+item.getItemName();
+            }
+        }
+
         SportItemJoin join = new SportItemJoin();
         join.setUserId(SessionUtils.getUserId());
         join.setUserName(SessionUtils.getUsername());
@@ -182,5 +197,19 @@ public class SportServiceImpl implements SportService {
         sportDao.merge(join);
 
         return msg;
+    }
+
+    @Override
+    public String queryScore(Long sportId, Long sportItemId) {
+        SportItemJoin sportItemJoin = sportDao.queryJoinByUserAndSportAndItem(SessionUtils.getUserId(), sportId, sportItemId);
+        if (sportItemJoin==null){
+            return "未报名此项运动";
+        }
+
+        if (StringUtils.isBlank(sportItemJoin.getRealScore())){
+            return "成绩未录入";
+        }
+
+        return "成绩："+sportItemJoin.getRealScore() + ",评分："+sportItemJoin.getScore();
     }
 }

@@ -37,4 +37,6 @@ public interface SportService {
     List<SportItemJoin> querySportItemJoins(Long sportId, Long sportItemId);
 
     String score(Long sportId, Long sportItemId, Long userId,Integer score,String realScore);
+
+    String queryScore(Long sportId, Long sportItemId);
 }
