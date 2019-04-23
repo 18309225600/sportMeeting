@@ -198,4 +198,18 @@ public class SportServiceImpl implements SportService {
 
         return msg;
     }
+
+    @Override
+    public String queryScore(Long sportId, Long sportItemId) {
+        SportItemJoin sportItemJoin = sportDao.queryJoinByUserAndSportAndItem(SessionUtils.getUserId(), sportId, sportItemId);
+        if (sportItemJoin==null){
+            return "未报名此项运动";
+        }
+
+        if (StringUtils.isBlank(sportItemJoin.getRealScore())){
+            return "成绩未录入";
+        }
+
+        return "成绩："+sportItemJoin.getRealScore() + ",评分："+sportItemJoin.getScore();
+    }
 }

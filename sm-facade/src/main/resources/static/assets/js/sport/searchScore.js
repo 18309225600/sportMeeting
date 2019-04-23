@@ -17,7 +17,7 @@ var bind = function () {
                 $("select.sportItem").empty();
                 $("select.sportItem").append("<option value='"+0+"'>"+"请选择"+"</option>")
                 for (var i = 0; i < msg.length; i++) {
-                    $("select.sportItem").append("<option value='"+msg[i].id+"  '>"+msg[i].itemName +"           时间："+ new Date(parseInt(msg[i].startAt)).toLocaleString().replace(/:\d{1,2}$/,' ')+"--"+new Date(parseInt(msg[i].endAt)).toLocaleString().replace(/:\d{1,2}$/,' ')+"</option>")
+                    $("select.sportItem").append("<option value='"+msg[i].id+"'>"+msg[i].itemName+"</option>")
                 }
             },
             error: function (data) {
@@ -26,14 +26,16 @@ var bind = function () {
         });
     });
 
+
     //报名
-    $("button.joinBtn").on("click",function () {
+    $("button.scoreBtn").on("click",function () {
         //获取变量
         var sportId = $("select.sport").val();
         var sportItemId = $("select.sportItem").val();
 
+
         var param = {"sportId":sportId,"sportItemId":sportItemId}
-        var url = "/sport/join";
+        var url = "/sport/searchScore";
         $.ajax(url,{
             async: true,
             type: "POST",
@@ -45,6 +47,5 @@ var bind = function () {
             }
         })
     });
-
 }
 

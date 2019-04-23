@@ -22,8 +22,9 @@
 
             <%--普通用户--%>
             <c:if test="${sessionScope.user.role eq 'user'}">
+                <%--<li><a href="${ctx}/sport/joinedList"><i class="fa fa-bullhorn"></i><span>已报名项目</span><div class="clearfix"></div></a></li>--%>
                 <li><a href="${ctx}/sport/joinPage"><i class="fa fa-bullhorn"></i><span>项目报名</span><div class="clearfix"></div></a></li>
-
+                <li><a href="${ctx}/sport/searchScore"><i class="fa fa-bullhorn"></i><span>成绩查询</span><div class="clearfix"></div></a></li>
             </c:if>
             <li><a href="${ctx}/login/exit"><i class="fa   fa-dot-circle-o"></i><span>登出系统</span><div class="clearfix"></div></a></li>
         </ul>

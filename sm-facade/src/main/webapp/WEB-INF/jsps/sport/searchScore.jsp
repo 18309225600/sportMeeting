@@ -33,7 +33,7 @@
         <div class="mother-grid-inner">
             <div class="validation-system">
                 <div class="validation-form">
-                    <h2 id="forms-example" class="">运动会报名</h2>
+                    <h2 id="forms-example" class="">运动会成绩查询</h2>
                     <form>
                         <div class="col-md-12 form-group2 group-mail">
                             <label class="control-label">运动会</label>
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <button type="button" class="btn btn-primary joinBtn">报名</button>
+                            <button type="button" class="btn btn-primary scoreBtn">查询成绩</button>
                         </div>
                         <div class="clearfix"> </div>
                     </form>
@@ -65,7 +65,7 @@
         </div>
     </div>
 </div>
-<script src="/static/assets/js/sport/joinPage.js"></script>
+<script src="/static/assets/js/sport/searchScore.js"></script>
 <script>
     var toggle = true;
 

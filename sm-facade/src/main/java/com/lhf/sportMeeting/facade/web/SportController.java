@@ -212,6 +212,29 @@ public class SportController {
     }
 
     /**
+     * 查询分数页面
+     * @return
+     */
+    @GetMapping("/searchScore")
+    public String searchScorePage(Map model){
+        //查询出活动列表
+        List<Sport> sports = sportService.allSport();
+        model.put("sports",sports);
+        return "sport/searchScore";
+    }
+
+    /**
+     * 查询分数
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/searchScore")
+    public String searchScore(@RequestBody SportScoreInputDto input){
+        String msg = sportService.queryScore(input.getSportId(),input.getSportItemId());
+        return msg;
+    }
+
+    /**
      * 根据运动id，比赛id获取报名信息
      * @param sportId
      * @param sportItemId
@@ -254,6 +277,24 @@ public class SportController {
         model.put("itemId",sportItemId);
         return "sport/joinList";
     }
+
+    /**
+     * 报名列表
+     * @param model
+     * @param sportId
+     * @param sportItemId
+     * @param page
+     * @return
+     */
+    /*@GetMapping("/joinList")
+    public String joinList(Map model,Long sportId,Long sportItemId,PageIn page){
+        PageInfo<SportItemJoin> pageInfo = sportService.joinList(sportId,sportItemId,page.getPageNo(),page.getPageSize());
+        model.put("pageNo",page.getPageNo());
+        model.put("list",pageInfo);
+        model.put("sportId",sportId);
+        model.put("itemId",sportItemId);
+        return "sport/joinList";
+    }*/
 
 
 }
